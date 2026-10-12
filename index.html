@@ -496,18 +496,8 @@ main section{scroll-margin-top:64px}
         <div class="item mixto"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-casa"/></svg></span><div><b>Ganancia por vender una casa o un local</b><small>Se calcula aparte, se paga en la declaración del año</small></div></div>
       </div>
       <div class="compara">
-        <p class="compara-tit">El impuesto al consumo y el IVA: se pagan con el mismo recibo, pero cada uno se calcula por separado</p>
-        <div class="scroll"><table>
-          <thead><tr><th scope="col"></th><th scope="col">Impuesto al consumo</th><th scope="col">IVA</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">¿Quién lo paga?</th><td>El cliente, al comprar</td><td>El cliente, al comprar</td></tr>
-            <tr><th scope="row">¿Con qué recibo y cada cuánto?</th><td>Recibo del Simple (formulario 2593), cada dos meses</td><td>Recibo del Simple (formulario 2593), cada dos meses</td></tr>
-            <tr><th scope="row">¿Cómo se calcula en el recibo?</th><td>En su propia sección: 8 % solo sobre las ventas de comidas y bebidas</td><td>En su propia sección: el IVA que cobraste menos el IVA que pagaste en tus compras</td></tr>
-            <tr><th scope="row">¿Hace parte del impuesto Simple?</th><td><strong>Sí</strong>, la ley lo integra al Simple (art. 907)</td><td><strong>No.</strong> Es un impuesto distinto</td></tr>
-            <tr><th scope="row">¿Dónde se declara al final del año?</th><td>En la declaración anual del Simple (formulario 260), en su propia sección</td><td>En una declaración anual de IVA aparte (formulario 300)</td></tr>
-          </tbody>
-        </table></div>
-        <p class="nota">En el recibo cada impuesto tiene su propia sección y su propio valor a pagar: el anticipo del Simple, el impuesto al consumo, el IVA y la industria y comercio de cada municipio. Lo que te sobre en uno no sirve para pagar otro. Lo mismo pasa al cierre del año: el impuesto al consumo va en la declaración del Simple, pero en su propia sección y con su propio saldo a pagar; el IVA va en una declaración distinta. Las tiendas de barrio, minimercados y peluquerías que solo se dedican a eso no cobran IVA.</p>
+        <p class="compara-tit">¿Y si cobras IVA o impuesto al consumo?</p>
+        <p class="nota">Los dos se pagan cada dos meses con el mismo recibo del Simple. La diferencia: el impuesto al consumo hace parte del Simple, y el IVA no, porque se declara aparte una vez al año. Las tiendas de barrio, minimercados y peluquerías que solo se dedican a eso no cobran IVA.</p>
       </div>
     </div>
   </div>
@@ -952,7 +942,7 @@ cargar(CASOS[0],botCasos[0]);
 var QUIZ=[
  {q:'¿Sobre qué se calcula lo que pagas en el Régimen Simple?',o:['Sobre lo que ganas después de gastos','Sobre todo lo que vendes en el año','Sobre lo que tienes ahorrado'],c:1,e:'Se calcula sobre todo lo que vendes (ingresos brutos), sin restar gastos.'},
  {q:'¿Hasta cuánto puedes vender al año para estar en el Régimen Simple?',o:['Unos $500 millones','Menos de unos $4.980 millones el año anterior','No hay límite'],c:1,e:'El límite es de 100.000 UVT y se mide con las ventas del año anterior: para estar en 2026, menos de $4.979,9 millones en 2025.'},
- {q:'¿Cuál de estos impuestos NO hace parte del Régimen Simple?',o:['Industria y comercio','El IVA','El impuesto al consumo de restaurantes'],c:1,e:'El IVA se paga cada dos meses con el mismo recibo del Simple, pero se calcula aparte y tiene su propia declaración anual (formulario 300). El impuesto al consumo, en cambio, la ley lo integra al Simple.'},
+ {q:'¿Cuál de estos impuestos NO hace parte del Régimen Simple?',o:['Industria y comercio','El IVA','El impuesto al consumo de restaurantes'],c:1,e:'El IVA se paga con el mismo recibo del Simple, pero no hace parte de él: se declara aparte una vez al año. El impuesto al consumo sí hace parte del Simple.'},
  {q:'Si ya tienes RUT, ¿hasta cuándo puedes pasarte al Régimen Simple?',o:['Hasta el último día hábil de febrero','En cualquier momento del año','Hasta diciembre'],c:0,e:'Quien ya tiene RUT puede pasarse hasta el último día hábil de febrero.'},
  {q:'Si tu negocio es tuyo y vendes $100 millones al año…',o:['Pagas cada mes','Haces un solo pago al año','No pagas nada'],c:1,e:'Si vendes hasta unos $183 millones al año, no pagas cada dos meses: haces un solo pago con la declaración anual.'}
 ];
@@ -985,8 +975,8 @@ var GLOS={
  renta:['Impuesto de renta','Es el impuesto que se paga sobre lo que ganas en el año, después de restar tus gastos. En el Régimen Simple se reemplaza por un solo pago sobre lo que vendes.'],
  ica:['Industria y comercio','Es un impuesto que cobra cada municipio a los negocios según lo que venden allí. En el Régimen Simple va incluido en el mismo pago.'],
  ingresos:['Ingresos brutos','Es todo lo que recibes por tu negocio en el año, antes de restar los gastos. Si vendiste $100 millones y gastaste $70 millones, tus ingresos brutos son $100 millones.'],
- iva:['IVA','Es el impuesto que se le cobra al cliente al venderle muchos productos y servicios (casi siempre 19 %). El negocio lo cobra y se lo entrega a la DIAN. En el Régimen Simple se paga cada dos meses con el mismo recibo, en una sección aparte, pero no hace parte del Simple: tiene su propia declaración anual de IVA.'],
- consumo:['Impuesto al consumo','Es un impuesto del 8 % que pagan los clientes de restaurantes, cafeterías y bares. En el Régimen Simple la ley lo integra al Simple. En el recibo de cada dos meses se calcula en su propia sección (8 % sobre las ventas de comidas y bebidas) y al final del año va en la declaración anual del Simple (formulario 260), también en su propia sección.'],
+ iva:['IVA','Es el impuesto que se le cobra al cliente al venderle muchos productos y servicios (casi siempre 19 %). El negocio lo cobra y se lo entrega a la DIAN. En el Régimen Simple se paga cada dos meses con el mismo recibo, pero no hace parte del Simple: se declara aparte una vez al año.'],
+ consumo:['Impuesto al consumo','Es un impuesto del 8 % que pagan los clientes de restaurantes, cafeterías y bares. En el Régimen Simple sí hace parte del Simple: se paga cada dos meses con el mismo recibo y se declara en la misma declaración del año.'],
  rut:['RUT','Es el Registro Único Tributario: tu “cédula” ante la DIAN. Ahí aparece qué impuestos te tocan. Se saca gratis en dian.gov.co.'],
  factura:['Factura electrónica','Es una factura que se hace por internet y llega directamente a la DIAN. La DIAN ofrece un programa gratuito para hacerla.'],
  anticipo:['Anticipo','Es un pago adelantado. En el Régimen Simple pagas cada dos meses una parte del impuesto del año, y al final se resta de lo que te toque.'],
