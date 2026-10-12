@@ -311,6 +311,14 @@ footer .legal p:first-child{background:rgba(0,0,0,.2);border-radius:12px;padding
 }
 
 main section{scroll-margin-top:64px}
+.item.mixto .bola{background:var(--alerta-bg);color:var(--alerta)}
+.item.mixto small{color:var(--alerta)}
+.compara{background:var(--sup);border:1px solid var(--linea);border-radius:14px;padding:18px;display:grid;gap:12px}
+.compara-tit{font-weight:700;font-size:.9375rem}
+.compara table{font-size:.875rem}
+.compara th,.compara td{white-space:normal;padding:10px 12px 10px 0;vertical-align:top;min-width:110px}
+.compara thead th{font-size:.7rem}
+.compara tbody th{font-weight:600;color:var(--tinta2);text-align:left}
 /* términos explicables */
 .term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:2px dotted var(--accion);font-weight:inherit;text-align:inherit}
 .term:hover{background:var(--icono-bg)}
@@ -478,16 +486,28 @@ main section{scroll-margin-top:64px}
       <p class="nota">Así lo define la ley: un impuesto opcional, que se declara una vez al año y se paga por adelantado cada dos meses (Estatuto Tributario, artículo 903).</p>
     </div>
     <div class="pila rev">
-      <h3>Qué se paga junto y qué sigue aparte</h3>
+      <h3>Qué hace parte del Régimen Simple y qué no</h3>
       <div class="entra">
         <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-renta"/></svg></span><div><b>Impuesto de renta</b><small>Lo reemplaza</small></div></div>
-        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-muni"/></svg></span><div><b>Industria y comercio, avisos y bomberos</b><small>Va incluido</small></div></div>
-        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-cafe"/></svg></span><div><b>Impuesto al consumo de restaurantes (8 %)</b><small>Va incluido</small></div></div>
-        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-recibo"/></svg></span><div><b><button type="button" class="term" data-t="iva">IVA</button></b><small>Sigue aparte*</small></div></div>
-        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-gente"/></svg></span><div><b>Lo que descuentas del sueldo de tus empleados</b><small>Sigue aparte</small></div></div>
-        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-casa"/></svg></span><div><b>Ganancia por vender una casa o un local</b><small>Se calcula aparte</small></div></div>
+        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-muni"/></svg></span><div><b>Industria y comercio, avisos y bomberos</b><small>Hace parte del Simple</small></div></div>
+        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-cafe"/></svg></span><div><b><button type="button" class="term" data-t="consumo">Impuesto al consumo</button> de restaurantes (8 %)</b><small>Hace parte del Simple</small></div></div>
+        <div class="item mixto"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-recibo"/></svg></span><div><b><button type="button" class="term" data-t="iva">IVA</button></b><small>Mismo recibo, pero no hace parte</small></div></div>
+        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-gente"/></svg></span><div><b>Lo que descuentas del sueldo de tus empleados</b><small>Va aparte</small></div></div>
+        <div class="item mixto"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-casa"/></svg></span><div><b>Ganancia por vender una casa o un local</b><small>Se calcula aparte, se paga en la declaración del año</small></div></div>
       </div>
-      <p class="nota">* Si cobras IVA, lo sigues pagando cada mes, pero con el mismo recibo del Régimen Simple. Las tiendas de barrio, minimercados y peluquerías que solo se dedican a eso no cobran IVA.</p>
+      <div class="compara">
+        <p class="compara-tit">¿Por qué el impuesto al consumo sí hace parte y el IVA no, si los dos se pagan con el mismo recibo?</p>
+        <div class="scroll"><table>
+          <thead><tr><th scope="col"></th><th scope="col">Impuesto al consumo</th><th scope="col">IVA</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">¿Quién lo paga?</th><td>El cliente, al comprar</td><td>El cliente, al comprar</td></tr>
+            <tr><th scope="row">¿Con qué recibo lo entregas?</th><td>El recibo del Simple, cada dos meses</td><td>El recibo del Simple, cada mes</td></tr>
+            <tr><th scope="row">¿Hace parte del impuesto Simple?</th><td><strong>Sí.</strong> El 8 % se suma a tu porcentaje del Simple</td><td><strong>No.</strong> Es un impuesto distinto</td></tr>
+            <tr><th scope="row">¿Dónde se declara al final del año?</th><td>En la misma declaración anual del Simple</td><td>En una declaración anual de IVA, aparte</td></tr>
+          </tbody>
+        </table></div>
+        <p class="nota">En pocas palabras: el recibo del Simple sirve para pagar los dos, pero solo el impuesto al consumo queda dentro del Simple. Las tiendas de barrio, minimercados y peluquerías que solo se dedican a eso no cobran IVA.</p>
+      </div>
     </div>
   </div>
 
@@ -931,7 +951,7 @@ cargar(CASOS[0],botCasos[0]);
 var QUIZ=[
  {q:'¿Sobre qué se calcula lo que pagas en el Régimen Simple?',o:['Sobre lo que ganas después de gastos','Sobre todo lo que vendes en el año','Sobre lo que tienes ahorrado'],c:1,e:'Se calcula sobre todo lo que vendes (ingresos brutos), sin restar gastos.'},
  {q:'¿Hasta cuánto puedes vender al año para estar en el Régimen Simple?',o:['Unos $500 millones','Menos de unos $4.980 millones el año anterior','No hay límite'],c:1,e:'El límite es de 100.000 UVT y se mide con las ventas del año anterior: para estar en 2026, menos de $4.979,9 millones en 2025.'},
- {q:'¿Qué impuesto sigue aparte aunque estés en el Régimen Simple?',o:['Industria y comercio','El IVA','El impuesto de renta'],c:1,e:'El IVA sigue aparte, aunque se paga con el mismo recibo.'},
+ {q:'¿Cuál de estos impuestos NO hace parte del Régimen Simple?',o:['Industria y comercio','El IVA','El impuesto al consumo de restaurantes'],c:1,e:'El IVA se paga cada mes con el mismo recibo del Simple, pero es un impuesto distinto y tiene su propia declaración anual. El impuesto al consumo, en cambio, sí hace parte del Simple.'},
  {q:'Si ya tienes RUT, ¿hasta cuándo puedes pasarte al Régimen Simple?',o:['Hasta el último día hábil de febrero','En cualquier momento del año','Hasta diciembre'],c:0,e:'Quien ya tiene RUT puede pasarse hasta el último día hábil de febrero.'},
  {q:'Si tu negocio es tuyo y vendes $100 millones al año…',o:['Pagas cada mes','Haces un solo pago al año','No pagas nada'],c:1,e:'Si vendes hasta unos $183 millones al año, no pagas cada dos meses: haces un solo pago con la declaración anual.'}
 ];
@@ -964,7 +984,8 @@ var GLOS={
  renta:['Impuesto de renta','Es el impuesto que se paga sobre lo que ganas en el año, después de restar tus gastos. En el Régimen Simple se reemplaza por un solo pago sobre lo que vendes.'],
  ica:['Industria y comercio','Es un impuesto que cobra cada municipio a los negocios según lo que venden allí. En el Régimen Simple va incluido en el mismo pago.'],
  ingresos:['Ingresos brutos','Es todo lo que recibes por tu negocio en el año, antes de restar los gastos. Si vendiste $100 millones y gastaste $70 millones, tus ingresos brutos son $100 millones.'],
- iva:['IVA','Es el impuesto que se le cobra al cliente al venderle muchos productos y servicios (casi siempre 19 %). El negocio lo cobra y se lo entrega a la DIAN.'],
+ iva:['IVA','Es el impuesto que se le cobra al cliente al venderle muchos productos y servicios (casi siempre 19 %). El negocio lo cobra y se lo entrega a la DIAN. En el Régimen Simple se entrega cada mes con el mismo recibo, pero no hace parte del Simple: se declara aparte una vez al año.'],
+ consumo:['Impuesto al consumo','Es un impuesto del 8 % que pagan los clientes de restaurantes, cafeterías y bares. En el Régimen Simple sí hace parte del Simple: se suma a tu porcentaje, se paga cada dos meses con el recibo y se declara en la misma declaración anual.'],
  rut:['RUT','Es el Registro Único Tributario: tu “cédula” ante la DIAN. Ahí aparece qué impuestos te tocan. Se saca gratis en dian.gov.co.'],
  factura:['Factura electrónica','Es una factura que se hace por internet y llega directamente a la DIAN. La DIAN ofrece un programa gratuito para hacerla.'],
  anticipo:['Anticipo','Es un pago adelantado. En el Régimen Simple pagas cada dos meses una parte del impuesto del año, y al final se resta de lo que te toque.'],
@@ -994,7 +1015,7 @@ var REGLAS='Eres Simón, un guía amable dentro de una página web educativa sob
  'Responde SIEMPRE en español de Colombia, con palabras sencillas, como le explicarías a un tendero o a un emprendedor sin formación contable. Máximo 120 palabras. Sin tablas ni markdown; puedes usar viñetas con guion. Si usas un término técnico, explícalo en la misma frase. '+
  'Usa estos datos vigentes en 2026 y no inventes cifras: UVT 2026 = $52.374. Límite: ingresos brutos del año anterior menores a 100.000 UVT (unos $5.237 millones; con UVT 2025 de $49.799 son $4.979,9 millones). '+
  'Porcentajes del art. 908 E.T. sobre ingresos brutos anuales, por rangos 0-6.000 / 6.000-15.000 / 15.000-30.000 / 30.000-100.000 UVT: tiendas pequeñas, minimercados, micromercados y peluquerías 1,2/2,8/4,4/5,6 %; comercio, industria, talleres, construcción y demás 1,6/2,0/3,5/4,5 %; expendio de comidas y bebidas y transporte 3,1/3,4/4,0/4,5 % (más 8 % de impuesto al consumo en comidas y bebidas); servicios profesionales, consultoría y profesiones liberales 5,9/7,3/12/14,5 %. Actividades CIIU 4665, 3830 y 3811: 1,62 %. Con varias actividades se usa la tarifa más alta. La Sentencia C-540 de 2023 anuló las tablas especiales de la Ley 2277 de 2022 para salud, educación y profesionales. '+
- 'Integra renta, industria y comercio (con avisos y tableros y sobretasa bomberil) e impuesto al consumo; el IVA sigue aparte pero se paga con el recibo SIMPLE (las tiendas pequeñas, minimercados y peluquerías no son responsables de IVA). Inscripción: actualizar el RUT (responsabilidad 47) hasta el último día hábil de febrero; si es la primera inscripción en el RUT, en cualquier momento. Salida: actualizar el RUT antes del último día hábil de enero para el año siguiente. Factura electrónica obligatoria dentro de los 2 meses siguientes. Anticipos bimestrales con el recibo electrónico (formulario 2593) aunque sean cero; declaración anual (formulario 260). Personas naturales con ingresos hasta 3.500 UVT (unos $183 millones) solo hacen la declaración y pago anual. Atrasarse más de un mes en un anticipo excluye del régimen. No hay retención en la fuente a título de renta; descuento del 0,5 % de las ventas por pagos electrónicos; los aportes a pensión de empleados se descuentan; exoneración de aportes parafiscales en los términos del art. 114-1. No pueden: sociedades extranjeras, no residentes, quien tenga en realidad relación laboral, filiales o subsidiarias, sociedades socias de otras, entidades financieras, microcrédito, factoring, asesoría financiera, energía eléctrica, automóviles, importación de combustibles, armas, quienes tengan 20 % o más de ingresos pasivos, y sociedades escindidas en los últimos 5 años. '+
+ 'Integra renta, industria y comercio (con avisos y tableros y sobretasa bomberil) e impuesto al consumo; el impuesto al consumo (8 %) hace parte del SIMPLE: se suma a la tarifa, se paga en el anticipo bimestral y se declara en la declaración anual del SIMPLE; el IVA NO hace parte del SIMPLE: se transfiere mensualmente con el mismo recibo electrónico SIMPLE pero se presenta en una declaración anual de IVA separada (art. 915) (las tiendas pequeñas, minimercados y peluquerías no son responsables de IVA). Inscripción: actualizar el RUT (responsabilidad 47) hasta el último día hábil de febrero; si es la primera inscripción en el RUT, en cualquier momento. Salida: actualizar el RUT antes del último día hábil de enero para el año siguiente. Factura electrónica obligatoria dentro de los 2 meses siguientes. Anticipos bimestrales con el recibo electrónico (formulario 2593) aunque sean cero; declaración anual (formulario 260). Personas naturales con ingresos hasta 3.500 UVT (unos $183 millones) solo hacen la declaración y pago anual. Atrasarse más de un mes en un anticipo excluye del régimen. No hay retención en la fuente a título de renta; descuento del 0,5 % de las ventas por pagos electrónicos; los aportes a pensión de empleados se descuentan; exoneración de aportes parafiscales en los términos del art. 114-1. No pueden: sociedades extranjeras, no residentes, quien tenga en realidad relación laboral, filiales o subsidiarias, sociedades socias de otras, entidades financieras, microcrédito, factoring, asesoría financiera, energía eléctrica, automóviles, importación de combustibles, armas, quienes tengan 20 % o más de ingresos pasivos, y sociedades escindidas en los últimos 5 años. '+
  'Si la pregunta no es sobre impuestos o este régimen, di amablemente que solo ayudas con este tema. Si no sabes algo con certeza, dilo y sugiere consultar a un contador o a la DIAN. Nunca prometas que alguien ahorrará dinero; recuerda que la decisión depende de cada caso. Si es útil, sugiere la sección de la página que sirve: verificador, porcentajes, simulador, pasos o pros y contras.';
 
 var guia=$('guia'),gbtn=$('guia-btn'),log=$('guia-log'),chips=$('guia-chips'),pista=$('pista-guia');
