@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Guía en lenguaje sencillo sobre el Régimen Simple de Tributación en Colombia 2026.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Régimen Simple desde cero</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Layout: retícula 12 col / base 8px (manual UCundinamarca). Bandas alternas: héroe en degradado institucional,
+   secciones claras y tintadas, simulador en banda verde profunda; amarillo reservado a acentos y llamados a la acción. */
+:root{
+  --verde:#007B3E; --verde-prof:#00482B; --amarillo:#FBE122; --oro:#DAAA00; --lima:#79C000; --turquesa:#00A99D; --naranja:#F7931E;
+  --bg:#F5F8F4; --sup:#FFFFFF; --sup2:#E7F0E9; --tinta:#14231A; --tinta2:#475950; --linea:#C6D5CA;
+  --accion:#007B3E; --accion-tx:#FFFFFF; --enlace:#006633; --icono-bg:#DCEFE2; --icono:#007B3E;
+  --ok:#006633; --ok-bg:#DFF2E5; --alerta:#8A4B00; --alerta-bg:#FDEBD0; --no:#A11A1A; --no-bg:#FBE1E1;
+  --barra-a:#007B3E; --barra-b:#5A5A5A; --sombra:0 12px 32px -16px rgba(0,72,43,.35);
+  --display:"Montserrat","Century Gothic","Avenir Next",system-ui,sans-serif;
+  --texto:"Montserrat","Century Gothic","Segoe UI",system-ui,sans-serif;
+  --norma:"Times New Roman",Times,serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0C1611; --sup:#14231B; --sup2:#182B21; --tinta:#EEF4EF; --tinta2:#B4C4B9; --linea:#2F4538;
+  --accion:#91C256; --accion-tx:#0C1611; --enlace:#A6D36F; --icono-bg:#1F3A2A; --icono:#A6D36F;
+  --ok:#9FE0B2; --ok-bg:#12371F; --alerta:#FFCB85; --alerta-bg:#3D2A0C; --no:#FFB0B0; --no-bg:#431818;
+  --barra-a:#79C000; --barra-b:#A9B3AC; --sombra:0 12px 32px -16px rgba(0,0,0,.6); color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0C1611; --sup:#14231B; --sup2:#182B21; --tinta:#EEF4EF; --tinta2:#B4C4B9; --linea:#2F4538;
+  --accion:#91C256; --accion-tx:#0C1611; --enlace:#A6D36F; --icono-bg:#1F3A2A; --icono:#A6D36F;
+  --ok:#9FE0B2; --ok-bg:#12371F; --alerta:#FFCB85; --alerta-bg:#3D2A0C; --no:#FFB0B0; --no-bg:#431818;
+  --barra-a:#79C000; --barra-b:#A9B3AC; --sombra:0 12px 32px -16px rgba(0,0,0,.6); color-scheme:dark }
+
+html{font-size:100%;scroll-behavior:smooth}
+html.grande{font-size:118%}
+body{background:var(--bg);color:var(--tinta);font-family:var(--texto);font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:var(--enlace);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h2{font-size:clamp(1.75rem,4.4vw,2.6rem);font-weight:800;letter-spacing:-.015em}
+h3{font-size:1.125rem;font-weight:700}
+p{margin:0;max-width:65ch}
+.num{font-variant-numeric:tabular-nums}
+.ic{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.salto{position:absolute;left:-999px;top:0;background:var(--amarillo);color:#00482B;padding:8px 16px;font-weight:700;z-index:30}
+.salto:focus{left:16px;top:8px}
+.env{max-width:1120px;margin-inline:auto;padding-inline:16px}
+.progreso{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--amarillo),var(--oro));z-index:25}
+
+/* barra */
+.barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--sup) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.barra .env{display:flex;align-items:center;gap:16px;padding-block:8px}
+.marca{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:.95rem;white-space:nowrap;color:var(--tinta);text-decoration:none}
+.marca i{width:28px;height:28px;border-radius:50% 50% 50% 8px;background:linear-gradient(135deg,var(--lima),var(--verde));display:block}
+.marca b{color:var(--accion)}
+.barra nav{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.barra ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.barra nav a{display:block;padding:8px 10px;font-size:.875rem;font-weight:600;color:var(--tinta2);text-decoration:none;white-space:nowrap;border-radius:999px;transition:background .2s,color .2s}
+.barra nav a:hover,.barra nav a.activo{background:var(--sup2);color:var(--accion)}
+.btn-txt{font:inherit;font-size:.8125rem;font-weight:700;padding:8px 12px;border:2px solid var(--accion);background:transparent;color:var(--accion);border-radius:999px;cursor:pointer;white-space:nowrap}
+.btn-txt[aria-pressed="true"]{background:var(--accion);color:var(--accion-tx)}
+
+/* héroe */
+.hero{position:relative;overflow:hidden;color:#FFFFFF;background:linear-gradient(135deg,#00482B 0%,#007B3E 58%,#00A99D 100%)}
+.burbuja{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none}
+.b1{width:420px;height:420px;right:-120px;top:-140px;background:radial-gradient(circle at 35% 35%,#79C000,transparent 65%);animation:flota 18s ease-in-out infinite}
+.b2{width:300px;height:300px;left:-100px;bottom:-60px;background:radial-gradient(circle at 50% 50%,#FBE122,transparent 62%);opacity:.28;animation:flota 22s ease-in-out infinite reverse}
+.b3{width:220px;height:220px;left:45%;top:30%;background:radial-gradient(circle,#00A99D,transparent 65%);animation:flota 26s ease-in-out infinite}
+.hoja{position:absolute;border:2px solid rgba(255,255,255,.18);border-radius:0 60% 0 60%;pointer-events:none;animation:gira 30s linear infinite}
+.h1{width:120px;height:120px;right:8%;bottom:18%}
+.h2{width:64px;height:64px;left:6%;top:14%;animation-duration:40s;border-color:rgba(251,225,34,.35)}
+@keyframes flota{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,40px) scale(1.12)}}
+@keyframes gira{to{transform:rotate(360deg)}}
+.hero .env{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;padding-block:64px 32px;align-items:center}
+.chip-curso{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:.8125rem;font-weight:700;letter-spacing:.04em}
+.chip-curso b{width:8px;height:8px;border-radius:50%;background:var(--amarillo);display:block;animation:latido 2s ease-in-out infinite}
+@keyframes latido{50%{transform:scale(1.6);opacity:.5}}
+.hero h1{font-size:clamp(2.4rem,6.6vw,4.4rem);font-weight:900;letter-spacing:-.03em;margin-block:24px}
+.hero h1 mark{background:var(--amarillo);color:#00482B;padding:0 .18em;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero p.lead{color:#DCEBE1;font-size:1.125rem}
+.cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;padding:14px 24px;border-radius:999px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .2s,box-shadow .2s}
+.btn.pri{background:var(--amarillo);color:#00482B;box-shadow:0 8px 24px -8px rgba(251,225,34,.7)}
+.btn.sec{border-color:#FFFFFF;color:#FFFFFF;background:transparent}
+.btn:hover{transform:translateY(-2px)}
+.fusion{position:relative;display:grid;gap:12px;min-width:0;background:rgba(0,40,24,.35);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:24px;backdrop-filter:blur(4px)}
+.fusion .de{display:flex;flex-wrap:wrap;gap:8px}
+.fusion .de span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#FFFFFF;padding:8px 12px;font-size:.8125rem;font-weight:600;border-radius:999px;animation:entra .6s both}
+.fusion .de span:nth-child(2){animation-delay:.12s}.fusion .de span:nth-child(3){animation-delay:.24s}.fusion .de span:nth-child(4){animation-delay:.36s}.fusion .de span:nth-child(5){animation-delay:.48s}
+@keyframes entra{from{transform:translateY(-14px);opacity:.2}}
+.embudo{display:flex;justify-content:center;gap:6px;height:36px;align-items:center}
+.embudo i{width:6px;height:6px;border-radius:50%;background:var(--amarillo);animation:cae 1.4s ease-in infinite}
+.embudo i:nth-child(2){animation-delay:.2s}.embudo i:nth-child(3){animation-delay:.4s}
+@keyframes cae{0%{transform:translateY(-10px);opacity:.2}60%{opacity:1}100%{transform:translateY(12px);opacity:.2}}
+.fusion .a{position:relative;background:var(--amarillo);color:#00482B;padding:24px;border-radius:14px;animation:aparece .7s .6s both}
+.fusion .a::after{content:"";position:absolute;inset:-6px;border-radius:18px;border:2px solid var(--amarillo);opacity:.6;animation:onda 2.6s 1.4s ease-out infinite}
+@keyframes aparece{from{transform:scale(.9);opacity:.3}}
+@keyframes onda{to{inset:-18px;opacity:0}}
+.fusion .a strong{display:block;font-family:var(--display);font-size:2.4rem;font-weight:900;line-height:1;letter-spacing:-.02em}
+.fusion .a span{display:block;margin-top:8px;font-weight:600;font-size:.9375rem;line-height:1.4}
+.fusion small{color:#CFE2D5;font-size:.8125rem}
+.datos{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0;padding-block:16px 72px}
+.datos div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px}
+.datos dt{font-size:.8125rem;color:#CFE2D5;font-weight:600}
+.datos dd{margin:6px 0 0;font-family:var(--display);font-size:clamp(1.5rem,3vw,2rem);font-weight:900;color:#FFFFFF;letter-spacing:-.01em}
+.datos dd small{display:block;font-size:.8125rem;font-weight:500;color:#CFE2D5;letter-spacing:0}
+.ola{display:block;width:100%;height:56px;margin-top:-55px;position:relative}
+.ola path{fill:var(--bg)}
+
+/* secciones */
+main section{padding-block:72px}
+main section.tinte{background:var(--sup2)}
+.cab{display:grid;gap:16px;margin-bottom:40px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accion)}
+.eyebrow::before{content:"";width:28px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--amarillo),var(--lima))}
+.cab p{color:var(--tinta2);font-size:1.0625rem}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px}
+.dos>*{min-width:0}
+.pila{display:grid;gap:16px;align-content:start}
+.norma{font-family:var(--norma);font-size:1.15rem;font-style:italic;background:var(--sup);border-radius:12px;padding:20px 24px;margin:8px 0 0;position:relative;box-shadow:var(--sombra)}
+.norma::before{content:"“";position:absolute;top:-18px;left:16px;font-size:4rem;line-height:1;color:var(--oro);font-family:var(--norma)}
+.norma cite{display:block;font-family:var(--texto);font-style:normal;font-size:.8125rem;font-weight:700;color:var(--tinta2);margin-top:8px}
+.panel{background:var(--sup);border:1px solid var(--linea);border-radius:16px;padding:24px;box-shadow:var(--sombra)}
+.nota{font-size:.875rem;color:var(--tinta2)}
+
+/* qué entra */
+.entra{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.item{display:flex;gap:12px;align-items:flex-start;background:var(--sup);border:1px solid var(--linea);border-radius:12px;padding:14px;transition:transform .2s,box-shadow .2s}
+.item:hover{transform:translateY(-3px);box-shadow:var(--sombra)}
+.item .bola{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--icono-bg);color:var(--icono);flex:none}
+.item.fuera .bola{background:var(--sup2);color:var(--tinta2)}
+.item b{display:block;font-size:.9375rem;line-height:1.3}
+.item small{display:inline-block;margin-top:4px;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accion)}
+.item.fuera small{color:var(--tinta2)}
+
+/* línea de tiempo */
+.tiempo{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;position:relative;margin-top:48px;list-style:none;padding:0}
+.tiempo::before{content:"";position:absolute;left:0;right:0;top:11px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--verde),var(--lima),var(--turquesa),var(--oro))}
+.tiempo li{position:relative;padding:36px 12px 0 0}
+.tiempo li::before{content:"";position:absolute;top:2px;left:0;width:18px;height:18px;border-radius:50%;background:var(--sup);border:4px solid var(--verde)}
+.tiempo li.hoy::before{background:var(--amarillo);border-color:var(--oro)}
+.tiempo b{display:block;font-family:var(--display);font-size:1.25rem;font-weight:900;color:var(--accion)}
+.tiempo span{display:block;font-size:.8125rem;line-height:1.45;color:var(--tinta2)}
+
+/* verificador */
+.verif{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:start}
+.medidor{display:flex;align-items:center;gap:12px;margin-bottom:8px;font-weight:700;font-size:.875rem;color:var(--tinta2)}
+.medidor .pista{flex:1;height:10px;border-radius:5px;background:var(--sup2);overflow:hidden}
+.medidor .pista i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,var(--verde),var(--lima));transition:width .4s ease}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.preg{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center;padding:16px 0;border-bottom:1px solid var(--linea)}
+.preg legend{font-weight:600;padding:0;float:left;width:100%}
+.preg legend small{display:block;font-weight:400;color:var(--tinta2);font-size:.875rem}
+.sn{display:flex;gap:8px}
+.sn label{position:relative;cursor:pointer}
+.sn input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.sn span{display:block;min-width:60px;text-align:center;padding:10px 16px;border:2px solid var(--linea);border-radius:999px;font-weight:700;font-size:.9375rem;transition:all .2s}
+.sn input:checked+span{background:var(--accion);border-color:var(--accion);color:var(--accion-tx);transform:scale(1.05)}
+.sn input:focus-visible+span{outline:3px solid var(--naranja);outline-offset:3px}
+.veredicto{position:sticky;top:96px;padding:28px;border-radius:16px;font-weight:600;display:grid;gap:12px;justify-items:start;transition:background .3s,color .3s}
+.veredicto .sello{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:currentColor}
+.veredicto .sello svg{width:32px;height:32px;stroke:var(--sup);stroke-width:3}
+.veredicto.cambia .sello{animation:sello .5s ease}
+@keyframes sello{0%{transform:scale(.4) rotate(-20deg)}70%{transform:scale(1.15)}}
+.veredicto strong{font-family:var(--display);font-size:1.375rem;font-weight:800;line-height:1.2}
+.veredicto.ok{background:var(--ok-bg);color:var(--ok)}
+.veredicto.no{background:var(--no-bg);color:var(--no)}
+.veredicto.pend{background:var(--sup);color:var(--tinta2);border:2px dashed var(--linea)}
+.veredicto ul{margin:0;padding-left:20px;font-weight:500}
+.veredicto p{font-weight:500}
+
+/* tarifas */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tabs button{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:.9375rem;padding:10px 18px;border:2px solid var(--linea);background:var(--sup);color:var(--tinta);border-radius:999px;cursor:pointer;transition:all .2s}
+.tabs button:hover{border-color:var(--accion)}
+.tabs button[aria-selected="true"]{background:var(--accion);border-color:var(--accion);color:var(--accion-tx);box-shadow:var(--sombra)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+caption{text-align:left;font-weight:700;padding-bottom:12px;color:var(--tinta2);font-size:.9375rem}
+th,td{padding:14px 16px 14px 0;text-align:left;border-bottom:1px solid var(--linea);white-space:nowrap;vertical-align:middle}
+thead th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2)}
+td.t{font-family:var(--display);font-weight:900;font-size:1.375rem;color:var(--accion);width:90px}
+td.v{width:34%;min-width:140px}
+.mini{height:14px;border-radius:7px;background:var(--sup2);overflow:hidden}
+.mini i{display:block;height:100%;width:0;border-radius:7px;background:linear-gradient(90deg,var(--lima),var(--verde));transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.claves{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+.clave{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:14px;background:var(--sup);border:1px solid var(--linea)}
+.clave .bola{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--icono-bg);color:var(--icono);flex:none}
+.clave.atn .bola{background:var(--alerta-bg);color:var(--alerta)}
+
+/* simulador */
+.banda{position:relative;overflow:hidden;background:linear-gradient(160deg,#00482B,#003A23);color:#FFFFFF}
+.banda .eyebrow{color:var(--amarillo)}
+.banda .cab p{color:#CFE2D5}
+.banda .b1{opacity:.25}
+.sim{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(0,0,0,.6)}
+.campos{display:grid;gap:20px;align-content:start;background:var(--sup);color:var(--tinta);padding:28px}
+.campo{display:grid;gap:6px}
+.campo label,.campo .lab{font-weight:700;font-size:.9375rem}
+.campo small{color:var(--tinta2);font-size:.8125rem}
+.campo input[type=text],.campo select{font:inherit;padding:12px 14px;border:2px solid var(--linea);border-radius:10px;background:var(--bg);color:var(--tinta);width:100%}
+.campo input[type=text]:focus,.campo select:focus{border-color:var(--accion)}
+.campo input[type=range]{width:100%;accent-color:var(--accion);height:28px}
+.casos{display:flex;flex-wrap:wrap;gap:8px}
+.casos button{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.8125rem;font-weight:700;padding:8px 12px;border:2px solid var(--linea);background:var(--bg);color:var(--tinta);border-radius:999px;cursor:pointer;transition:all .2s}
+.casos button:hover{border-color:var(--accion)}
+.casos button[aria-pressed="true"]{background:var(--amarillo);border-color:var(--amarillo);color:#00482B}
+.casos .ic{width:16px;height:16px}
+.res{display:grid;gap:24px;align-content:start;min-width:0;background:var(--sup2);color:var(--tinta);padding:28px}
+.gran{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.75rem);font-weight:800;line-height:1.25}
+.gran em{font-style:normal;background:var(--amarillo);color:#00482B;padding:0 .2em;border-radius:4px}
+.ganador{display:inline-flex;align-items:center;gap:6px;background:var(--accion);color:var(--accion-tx);font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.fila{display:grid;gap:8px;background:var(--sup);border-radius:14px;padding:16px;border:2px solid transparent;transition:border-color .3s}
+.fila.gana{border-color:var(--accion)}
+.fila .et{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700;flex-wrap:wrap}
+.fila .monto{font-family:var(--display);font-weight:900;font-size:1.5rem}
+.riel{height:18px;background:var(--sup2);border-radius:9px;overflow:hidden}
+.riel i{display:block;height:100%;width:0;border-radius:9px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.riel i.a{background:linear-gradient(90deg,var(--lima),var(--barra-a))} .riel i.b{background:var(--barra-b)}
+.fila small{color:var(--tinta2);font-size:.8125rem}
+.detalle{margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 16px;font-size:.9375rem}
+.detalle dt{color:var(--tinta2)} .detalle dd{margin:0;font-weight:800;text-align:right}
+
+/* pasos */
+.ruta{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.ruta li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding-bottom:28px;position:relative}
+.ruta li:not(:last-child)::after{content:"";position:absolute;left:27px;top:56px;bottom:0;width:3px;background:linear-gradient(var(--lima),var(--linea))}
+.ruta .paso{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--accion);color:var(--accion-tx);font-family:var(--display);font-weight:900;font-size:1.375rem;box-shadow:0 0 0 6px var(--icono-bg)}
+.ruta h3{padding-top:14px}
+.ruta p{color:var(--tinta2);margin-top:6px}
+.tarjeta{display:grid;gap:10px;padding:24px;border-radius:16px;background:var(--sup);border:1px solid var(--linea);box-shadow:var(--sombra)}
+.tarjeta .bola{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--icono-bg);color:var(--icono)}
+.tarjeta.atn .bola{background:var(--alerta-bg);color:var(--alerta)}
+.tarjeta.dest{background:linear-gradient(135deg,var(--amarillo),#FFE95C);border:0;color:#00482B}
+.tarjeta.dest .bola{background:rgba(0,72,43,.12);color:#00482B}
+.tarjeta.dest .nota{color:#1F3B2A}
+
+/* ventajas */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.col{border-radius:20px;padding:28px;display:grid;gap:16px;align-content:start}
+.col.pro{background:var(--sup);border-top:6px solid var(--lima)}
+.col.contra{background:var(--sup);border-top:6px solid var(--naranja)}
+.col h3{display:flex;align-items:center;gap:10px;font-size:1.375rem}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.col li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.col li .ic{width:22px;height:22px;margin-top:2px}
+.col.pro li .ic{color:var(--accion)} .col.contra li .ic{color:var(--alerta)}
+
+/* faq */
+.faq{display:grid;gap:12px}
+details{background:var(--sup);border:1px solid var(--linea);border-radius:14px;overflow:hidden;transition:box-shadow .2s}
+details[open]{box-shadow:var(--sombra);border-color:var(--accion)}
+summary{cursor:pointer;font-weight:700;padding:18px 56px 18px 20px;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--icono-bg);color:var(--icono);font-size:1.25rem;font-weight:700;transition:transform .3s}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details p{padding:0 20px 18px;color:var(--tinta2)}
+
+/* quiz */
+.quiz{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.q{background:var(--sup);border:1px solid var(--linea);border-radius:16px;padding:22px;display:grid;gap:14px;align-content:start}
+.q h3{font-size:1rem;line-height:1.4}
+.q h3 span{display:block;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accion);margin-bottom:6px}
+.ops{display:grid;gap:8px}
+.ops button{font:inherit;font-weight:600;font-size:.9375rem;text-align:left;padding:12px 14px;border-radius:10px;border:2px solid var(--linea);background:var(--bg);color:var(--tinta);cursor:pointer;transition:all .2s}
+.ops button:hover:not(:disabled){border-color:var(--accion);transform:translateX(4px)}
+.ops button:disabled{cursor:default}
+.ops button.bien{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.ops button.mal{background:var(--no-bg);border-color:var(--no);color:var(--no)}
+.expl{font-size:.875rem;color:var(--tinta2);border-left:4px solid var(--lima);padding-left:12px}
+.marcador{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.marcador .pts{font-family:var(--display);font-weight:900;font-size:2rem;color:var(--accion)}
+.btn-borde{font:inherit;font-weight:700;font-size:.875rem;padding:8px 16px;border-radius:999px;border:2px solid var(--accion);background:transparent;color:var(--accion);cursor:pointer}
+
+.fuentes{margin:0;padding-left:20px;display:grid;gap:8px;font-size:.9375rem}
+
+/* pie */
+footer{position:relative;overflow:hidden;background:linear-gradient(135deg,#00482B,#007B3E);color:#FFFFFF;padding-block:56px}
+footer .env{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+.creditos{display:grid;gap:16px}
+.creditos .rol{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amarillo)}
+.creditos .nom{font-family:var(--display);font-size:1.375rem;font-weight:800;line-height:1.2}
+.creditos .curso{font-weight:600;color:#DCEBE1}
+footer .legal{font-size:.875rem;color:#DCEBE1;display:grid;gap:12px}
+footer .legal p:first-child{background:rgba(0,0,0,.2);border-radius:12px;padding:16px}
+
+/* aparición al desplazarse (solo si hay JS y movimiento permitido) */
+.rev.vis{animation:sube .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sube{from{opacity:.15;transform:translateY(32px)}}
+
+@media (max-width:860px){
+  .hero .env,.dos,.sim,.verif,.vs,.quiz,footer .env{grid-template-columns:1fr}
+  .hero .env{padding-block:40px 24px;gap:32px}
+  .datos{grid-template-columns:1fr;padding-bottom:64px}
+  .entra,.claves{grid-template-columns:1fr}
+  main section{padding-block:56px}
+  .preg{grid-template-columns:1fr}
+  .marca span{display:none}
+  .tiempo{grid-template-columns:1fr;margin-top:32px}
+  .tiempo::before{left:7px;right:auto;top:0;bottom:0;width:4px;height:auto;background:linear-gradient(var(--verde),var(--lima),var(--oro))}
+  .tiempo li{padding:0 0 20px 36px}
+  .tiempo li::before{top:4px}
+  .veredicto{position:static}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+main section{scroll-margin-top:64px}
+/* términos explicables */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;border-bottom:2px dotted var(--accion);font-weight:inherit;text-align:inherit}
+.term:hover{background:var(--icono-bg)}
+.hero .term,.banda .cab .term{border-bottom-color:var(--amarillo)}
+.hero .term:hover{background:rgba(255,255,255,.12)}
+.analogia{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--sup);border-radius:16px;padding:20px 24px;box-shadow:var(--sombra);border-left:6px solid var(--amarillo)}
+.analogia .bola{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:var(--amarillo);color:#00482B}
+.analogia strong{display:block;font-family:var(--display);font-size:1.0625rem;margin-bottom:4px}
+.ejemplo{margin-top:16px;padding:16px 20px;border-radius:12px;background:var(--icono-bg);font-weight:600}
+.ejemplo b{font-family:var(--display);font-weight:900;color:var(--accion)}
+.uvt-chica{display:block;font-size:.75rem;color:var(--tinta2);font-weight:500}
+.resaltado{position:relative;z-index:1;animation:resalta 1.6s ease 2}
+@keyframes resalta{50%{box-shadow:inset 0 0 0 4px var(--amarillo)}}
+
+/* asistente */
+.guia-btn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;font:inherit;font-weight:800;font-size:.9375rem;padding:8px 18px 8px 8px;border-radius:999px;border:0;background:var(--amarillo);color:#00482B;cursor:pointer;box-shadow:0 12px 32px -8px rgba(0,40,24,.55);transition:transform .2s}
+.guia-btn:hover{transform:translateY(-3px)}
+.guia-btn[aria-expanded="true"]{display:none}
+.avatar{position:relative;width:44px;height:44px;flex:none;border-radius:50% 50% 50% 14px;background:linear-gradient(140deg,#79C000,#007B3E);display:grid;place-items:center}
+.avatar::before,.avatar::after{content:"";position:absolute;top:16px;width:7px;height:9px;border-radius:50%;background:#FFFFFF;animation:parpadea 5s infinite}
+.avatar::before{left:13px}.avatar::after{right:13px}
+.avatar i{position:absolute;bottom:11px;left:50%;width:14px;height:6px;margin-left:-7px;border:2.5px solid #FFFFFF;border-top:0;border-radius:0 0 10px 10px}
+@keyframes parpadea{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.avatar.chico{width:32px;height:32px;border-radius:50% 50% 50% 10px}
+.avatar.chico::before,.avatar.chico::after{top:11px;width:5px;height:6px}
+.avatar.chico::before{left:9px}.avatar.chico::after{right:9px}
+.avatar.chico i{bottom:7px;width:10px;height:4px;margin-left:-5px;border-width:2px}
+.guia-btn .punto{position:absolute;top:2px;left:36px;width:12px;height:12px;border-radius:50%;background:var(--naranja);border:2px solid var(--amarillo)}
+.pista-guia{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:39;max-width:300px;background:var(--sup);color:var(--tinta);border:1px solid var(--linea);border-radius:16px 16px 4px 16px;padding:14px 40px 14px 16px;font-size:.9375rem;box-shadow:var(--sombra);animation:entra .4s both}
+.pista-guia button.ir{font:inherit;font-weight:700;font-size:.875rem;color:var(--accion);background:none;border:0;padding:0;margin-top:6px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pista-guia button.x{position:absolute;top:8px;right:8px;width:28px;height:28px;border:0;border-radius:50%;background:var(--sup2);color:var(--tinta2);cursor:pointer;font-size:1rem;line-height:1}
+.guia{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:41;width:min(400px,calc(100vw - 32px));height:min(600px,calc(100vh - 120px));display:flex;flex-direction:column;background:var(--sup);color:var(--tinta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 24px 64px -16px rgba(0,30,18,.55);overflow:hidden;animation:abre .3s cubic-bezier(.2,.8,.2,1)}
+.guia.recorrido{height:min(330px,calc(100vh - 120px))}
+@keyframes abre{from{transform:translateY(20px) scale(.97);opacity:.4}}
+.guia-cab{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,#00482B,#007B3E);color:#FFFFFF}
+.guia-cab div{flex:1;min-width:0}
+.guia-cab strong{display:block;font-family:var(--display);font-size:1rem}
+.guia-cab small{color:#CFE2D5;font-size:.8125rem}
+.guia-cab button{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#FFFFFF;cursor:pointer;display:grid;place-items:center}
+.guia-cab button .ic{width:20px;height:20px}
+.guia-log{flex:1;overflow-y:auto;padding:16px;display:grid;gap:12px;align-content:start;background:var(--bg)}
+.msg{max-width:92%;padding:12px 14px;border-radius:16px;font-size:.9375rem;line-height:1.55;white-space:pre-line;animation:entra .3s both}
+.msg.yo{justify-self:end;background:var(--accion);color:var(--accion-tx);border-bottom-right-radius:4px}
+.msg.el{justify-self:start;background:var(--sup);border:1px solid var(--linea);border-bottom-left-radius:4px}
+.msg.el strong{font-family:var(--display)}
+.msg.pensando{color:var(--tinta2);font-style:italic}
+.msg .acciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;white-space:normal}
+.msg .acciones button,.chips button{font:inherit;font-size:.8125rem;font-weight:700;padding:8px 12px;border-radius:999px;border:2px solid var(--accion);background:var(--sup);color:var(--accion);cursor:pointer}
+.msg .acciones button:disabled{opacity:.45;cursor:default}
+.msg .acciones button.pri{background:var(--accion);color:var(--accion-tx)}
+.paso-n{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accion);margin-bottom:4px}
+.guia-pie{border-top:1px solid var(--linea);padding:12px;display:grid;gap:10px;background:var(--sup)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.chips button{white-space:nowrap;border-width:1px}
+.preguntar{display:flex;gap:8px}
+.preguntar input{flex:1;min-width:0;font:inherit;font-size:.9375rem;padding:10px 14px;border-radius:999px;border:2px solid var(--linea);background:var(--bg);color:var(--tinta)}
+.preguntar input:focus{border-color:var(--accion);outline:none}
+.preguntar button{width:44px;height:44px;flex:none;border-radius:50%;border:0;background:var(--accion);color:var(--accion-tx);cursor:pointer;display:grid;place-items:center}
+.preguntar button:disabled{opacity:.5;cursor:default}
+.guia-aviso{font-size:.75rem;color:var(--tinta2);margin:0}
+@media (max-width:560px){
+  .guia{right:8px;left:8px;width:auto;bottom:calc(8px + env(safe-area-inset-bottom,0px));height:min(75vh,600px)}
+  .guia.recorrido{height:min(46vh,330px)}
+  .guia-btn .txt{display:none}
+  .guia-btn{padding:8px}
+  .pista-guia{right:16px;left:16px;max-width:none}
+}
+
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-dudas" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></symbol>
+  <symbol id="i-renta" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-muni" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></symbol>
+  <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9ZM17 11h2a2 2 0 0 1 0 4h-2M8 3v3M12 3v3"/></symbol>
+  <symbol id="i-recibo" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 8h6M9 12h6"/></symbol>
+  <symbol id="i-gente" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></symbol>
+  <symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7M5 10v10h14V10"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3ZM12 10v4M12 17v.01"/></symbol>
+  <symbol id="i-tarjeta" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-tienda" viewBox="0 0 24 24"><path d="M3 9 5 4h14l2 5M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0V9ZM5 13v8h14v-8"/></symbol>
+  <symbol id="i-lapiz" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4ZM13 7l4 4"/></symbol>
+  <symbol id="i-llave" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5l-9 9-3-3 9-9a4 4 0 0 0-2-2ZM7.5 14.5l2 2"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18.5h8"/></symbol>
+  <symbol id="i-enviar" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-3-7-7-1Z"/></symbol>
+  <symbol id="i-bajar" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+</svg>
+
+<div lang="es-CO">
+<a class="salto" href="#contenido">Saltar al contenido</a>
+<div class="progreso" id="progreso" aria-hidden="true"></div>
+
+<header class="barra">
+  <div class="env">
+    <a class="marca" href="#inicio"><i aria-hidden="true"></i><span>Régimen <b>Simple</b></span></a>
+    <nav aria-label="Secciones de la página">
+      <ul id="menu">
+        <li><a href="#que-es">Qué es</a></li>
+        <li><a href="#puedo">¿Puedo?</a></li>
+        <li><a href="#tarifas">Cuánto pago</a></li>
+        <li><a href="#simulador">¿Me conviene?</a></li>
+        <li><a href="#pasos">Cómo entro</a></li>
+        <li><a href="#balance">Pros y contras</a></li>
+        <li><a href="#reto">Ponte a prueba</a></li>
+      </ul>
+    </nav>
+    <button class="btn-txt" id="btn-grande" type="button" aria-pressed="false">A+ Texto grande</button>
+  </div>
+</header>
+
+<div class="hero" id="inicio">
+  <div class="burbuja b1" aria-hidden="true"></div><div class="burbuja b2" aria-hidden="true"></div><div class="burbuja b3" aria-hidden="true"></div>
+  <div class="hoja h1" aria-hidden="true"></div><div class="hoja h2" aria-hidden="true"></div>
+  <div class="env">
+    <div>
+      <span class="chip-curso"><b aria-hidden="true"></b>Guía para emprendedores · 2026</span>
+      <h1>Un solo impuesto <mark>en lugar de varios</mark></h1>
+      <p class="lead">Si tienes un negocio pequeño o mediano, el Régimen Simple te deja pagar tus impuestos en un solo lugar y con menos papeleo. Aquí te lo explicamos paso a paso, sin palabras complicadas.</p>
+      <div class="cta">
+        <button class="btn pri" type="button" id="cta-guia"><span class="avatar chico" aria-hidden="true"><i></i></span>Hacer el recorrido guiado</button>
+        <a class="btn sec" href="#simulador">Calcular si me conviene</a>
+      </div>
+    </div>
+    <div class="fusion" role="img" aria-label="Con el Régimen Simple, el impuesto de renta, el de industria y comercio, avisos y tableros, la sobretasa de bomberos y el impuesto al consumo se pagan juntos en un solo pago.">
+      <div class="de" aria-hidden="true">
+        <span>Impuesto de renta</span><span>Industria y comercio</span><span>Avisos y tableros</span><span>Sobretasa de bomberos</span><span>Impuesto al consumo*</span>
+      </div>
+      <div class="embudo" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="a" aria-hidden="true"><strong>SIMPLE</strong><span>Un solo pago a la DIAN, que luego le entrega al municipio lo que le corresponde.</span></div>
+      <small aria-hidden="true">* Solo para restaurantes, cafeterías, bares y similares.</small>
+    </div>
+  </div>
+  <div class="env">
+    <dl class="datos num">
+      <div><dt>Para estar en 2026, tus ventas de 2025 deben ser menores a</dt><dd>$<span class="cuenta" data-v="4979">4.979</span> millones<small>100.000 UVT. Negocios nuevos: hasta $5.237 millones en 2026</small></dd></div>
+      <div><dt>Lo que pagas es un porcentaje de lo que vendes</dt><dd>Del 1,2 % al 14,5 %<small>según a qué te dedicas y cuánto vendes</small></dd></div>
+      <div><dt>Valor de 1 <button type="button" class="term" data-t="uvt">UVT</button> en 2026</dt><dd>$<span class="cuenta" data-v="52374">52.374</span><small>la medida que usa la DIAN para fijar valores</small></dd></div>
+    </dl>
+  </div>
+  <svg class="ola" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 32c240-40 480 24 720 16s480-40 720-8v16H0z"/></svg>
+</div>
+
+<main id="contenido">
+
+<section id="que-es"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Empecemos por lo básico</p>
+    <h2>¿Qué es el Régimen Simple?</h2>
+  </div>
+  <div class="dos">
+    <div class="pila rev">
+      <p>Normalmente un negocio paga varios impuestos por separado. A la <button type="button" class="term" data-t="dian">DIAN</button> le paga <button type="button" class="term" data-t="renta">impuesto de renta</button> según lo que gana, y a la alcaldía le paga <button type="button" class="term" data-t="ica">industria y comercio</button> según lo que vende. Son formularios y fechas distintas.</p>
+      <p>Con el Régimen Simple todo se junta en <strong>un solo pago</strong>. Se calcula sobre <strong>lo que vendes en el año</strong> (los <button type="button" class="term" data-t="ingresos">ingresos brutos</button>), sin restar gastos. El porcentaje depende de a qué te dedicas y de cuánto vendes.</p>
+      <p>Es <strong>voluntario</strong>. Tú decides si entras, y cada año puedes salirte.</p>
+      <div class="analogia">
+        <span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-recibo"/></svg></span>
+        <div><strong>Piénsalo así</strong><p>Es como juntar los recibos del agua, la luz y el gas en una sola factura: pagas una vez, en un solo lugar, y alguien más se encarga de repartir el dinero.</p></div>
+      </div>
+      <p class="nota">Así lo define la ley: un impuesto opcional, que se declara una vez al año y se paga por adelantado cada dos meses (Estatuto Tributario, artículo 903).</p>
+    </div>
+    <div class="pila rev">
+      <h3>Qué se paga junto y qué sigue aparte</h3>
+      <div class="entra">
+        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-renta"/></svg></span><div><b>Impuesto de renta</b><small>Lo reemplaza</small></div></div>
+        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-muni"/></svg></span><div><b>Industria y comercio, avisos y bomberos</b><small>Va incluido</small></div></div>
+        <div class="item"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-cafe"/></svg></span><div><b>Impuesto al consumo de restaurantes (8 %)</b><small>Va incluido</small></div></div>
+        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-recibo"/></svg></span><div><b><button type="button" class="term" data-t="iva">IVA</button></b><small>Sigue aparte*</small></div></div>
+        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-gente"/></svg></span><div><b>Lo que descuentas del sueldo de tus empleados</b><small>Sigue aparte</small></div></div>
+        <div class="item fuera"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-casa"/></svg></span><div><b>Ganancia por vender una casa o un local</b><small>Se calcula aparte</small></div></div>
+      </div>
+      <p class="nota">* Si cobras IVA, lo sigues pagando cada mes, pero con el mismo recibo del Régimen Simple. Las tiendas de barrio, minimercados y peluquerías que solo se dedican a eso no cobran IVA.</p>
+    </div>
+  </div>
+
+  <h3 class="rev" style="margin-top:64px">Cómo llegamos hasta aquí</h3>
+  <ol class="tiempo rev">
+    <li><b>2016</b><span>Primer intento: el “Monotributo”, para pequeños comerciantes.</span></li>
+    <li><b>2018</b><span>Nace el Régimen Simple.</span></li>
+    <li><b>2019</b><span>La Corte anula la ley por un error en su trámite y el Congreso la vuelve a aprobar.</span></li>
+    <li><b>2021</b><span>Más negocios pueden entrar: el límite de ventas sube.</span></li>
+    <li><b>2022</b><span>Una reforma crea porcentajes nuevos para profesionales, salud y educación.</span></li>
+    <li><b>2023</b><span>La Corte anula esos porcentajes nuevos y vuelven los anteriores.</span></li>
+    <li class="hoy"><b>Hoy</b><span>Reglas claras sobre qué te puede sacar del régimen (Decreto 1545 de 2024).</span></li>
+  </ol>
+</div></section>
+
+<section id="puedo" class="tinte"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Compruébalo en un minuto</p>
+    <h2>¿Puedo entrar al Régimen Simple?</h2>
+    <p>Responde seis preguntas de sí o no. El resultado es una orientación; la decisión final siempre conviene revisarla con un contador.</p>
+  </div>
+  <div class="verif rev">
+    <form class="panel" id="verificador" novalidate>
+      <div class="medidor"><span id="contador" class="num">0 de 6</span><div class="pista" aria-hidden="true"><i id="pista"></i></div></div>
+      <div id="preguntas"></div>
+    </form>
+    <div class="veredicto pend" id="veredicto" role="status" aria-live="polite"></div>
+  </div>
+</div></section>
+
+<section id="tarifas"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Los porcentajes</p>
+    <h2>¿Cuánto se paga?</h2>
+    <p>Pagas un porcentaje de <strong>todo lo que vendes en el año</strong>. Ese porcentaje depende de a qué te dedicas y de cuánto vendes. Ya incluye lo que le toca al municipio, así que no pagas industria y comercio por aparte. Elige tu tipo de negocio:</p>
+  </div>
+  <div class="rev">
+    <div class="tabs" role="tablist" aria-label="Tipo de negocio" id="tabs"></div>
+    <div class="panel" role="tabpanel" id="panel-tarifas" tabindex="0">
+      <div class="scroll"><table id="tabla-tarifas"></table></div>
+      <p class="nota" id="nota-tarifa" style="margin-top:16px"></p>
+      <p class="ejemplo" id="ejemplo-tarifa"></p>
+    </div>
+  </div>
+  <div class="claves rev">
+    <div class="clave"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-capas"/></svg></span><p class="nota"><strong>¿Haces varias cosas?</strong> Si tu negocio tiene varias actividades (por ejemplo, tienda y cafetería), se usa el porcentaje más alto de ellas.</p></div>
+    <div class="clave atn"><span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-alerta"/></svg></span><p class="nota"><strong>Ojo, profesionales:</strong> abogados, contadores, diseñadores y otros profesionales independientes pagan los porcentajes más altos, entre 5,9 % y 14,5 %. Antes de entrar, haz las cuentas en el simulador.</p></div>
+  </div>
+</div></section>
+
+<section id="simulador" class="banda">
+  <div class="burbuja b1" aria-hidden="true"></div>
+  <div class="env" style="position:relative">
+  <div class="cab rev">
+    <p class="eyebrow">Haz tus cuentas</p>
+    <h2>¿Me conviene? Compara los dos caminos</h2>
+    <p>El Régimen Simple cobra sobre lo que vendes. El régimen tradicional cobra sobre lo que ganas después de pagar tus gastos. Por eso, si tus gastos son muy altos y ganas poco, suele convenir el tradicional; si tus gastos son bajos, suele convenir el Simple. Prueba con tus números o con un ejemplo.</p>
+  </div>
+  <div class="sim rev">
+    <form class="campos" id="form-sim" novalidate>
+      <div class="campo">
+        <span class="lab" id="lab-casos">Empieza con un ejemplo</span>
+        <div class="casos" role="group" aria-labelledby="lab-casos" id="casos"></div>
+      </div>
+      <div class="campo">
+        <label for="s-tipo">¿El negocio es tuyo o de una empresa?</label>
+        <select id="s-tipo">
+          <option value="pn">Es mío (persona natural)</option>
+          <option value="pj">Es de una empresa (por ejemplo, una S.A.S.)</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="s-act">¿A qué te dedicas?</label>
+        <select id="s-act"></select>
+      </div>
+      <div class="campo">
+        <label for="s-nuevo">¿Tu negocio ya existía el año pasado?</label>
+        <select id="s-nuevo">
+          <option value="no">Sí, ya existía</option>
+          <option value="si">No, empezó este año (2026)</option>
+        </select>
+        <small>Esto define el límite: se miran las ventas del año pasado o, si el negocio es nuevo, las de este año.</small>
+      </div>
+      <div class="campo">
+        <label for="s-ing">¿Cuánto vendes en un año? (en pesos)</label>
+        <input type="text" id="s-ing" inputmode="numeric" autocomplete="off" aria-describedby="s-ing-ay">
+        <small id="s-ing-ay" class="num"></small>
+      </div>
+      <div class="campo">
+        <label for="s-cos">¿Cuánto de eso se va en gastos? <output id="s-cos-o" for="s-cos" class="num"></output></label>
+        <input type="range" id="s-cos" min="0" max="95" step="1">
+        <small>Mercancía, arriendo, sueldos, servicios públicos y demás gastos del negocio.</small>
+      </div>
+      <div class="campo">
+        <label for="s-ica">Impuesto de industria y comercio en tu municipio: <output id="s-ica-o" for="s-ica" class="num"></output></label>
+        <input type="range" id="s-ica" min="2" max="14" step="0.5">
+        <small>Cada municipio cobra distinto y se mide “por mil”: 7 por mil es 0,7 %. Si no sabes el tuyo, deja 7.</small>
+      </div>
+    </form>
+    <div class="res" aria-live="polite" id="res">
+      <p class="gran" id="r-frase"></p>
+      <div class="fila" id="f-simple">
+        <div class="et"><span>Régimen Simple <span class="ganador" id="g-simple" hidden>Más barato</span></span><span class="monto num" id="r-simple"></span></div>
+        <div class="riel" aria-hidden="true"><i class="a" id="b-simple"></i></div>
+        <small id="r-simple-d"></small>
+      </div>
+      <div class="fila" id="f-ord">
+        <div class="et"><span>Régimen tradicional <span class="ganador" id="g-ord" hidden>Más barato</span></span><span class="monto num" id="r-ord"></span></div>
+        <div class="riel" aria-hidden="true"><i class="b" id="b-ord"></i></div>
+        <small id="r-ord-d"></small>
+      </div>
+      <p class="nota" id="r-porque"></p>
+      <dl class="detalle num" id="r-det"></dl>
+      <p class="nota" id="r-inc"></p>
+      <p class="nota">Es un cálculo aproximado para aprender, no una liquidación oficial. En el tradicional se calcula el impuesto de renta sobre la ganancia (ventas menos gastos) con la tabla del artículo 241 para personas o el 35 % para empresas, más industria y comercio. No incluye descuentos ni beneficios especiales. Antes de decidir, revisa tu caso con un contador.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="pasos"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Paso a paso</p>
+    <h2>Cómo entrar y qué tienes que hacer después</h2>
+  </div>
+  <div class="dos">
+    <ol class="ruta rev">
+      <li><span class="paso" aria-hidden="true">1</span><div><h3>Revisa si puedes entrar</h3><p>Usa el verificador de esta página. Si alguna respuesta te deja por fuera, el régimen no es para ti.</p></div></li>
+      <li><span class="paso" aria-hidden="true">2</span><div><h3>Inscríbete en tu <button type="button" class="term" data-t="rut">RUT</button></h3><p>En la página de la DIAN marcas que quieres estar en el Régimen Simple (código 47). Si ya tienes RUT, tienes plazo hasta el <strong>último día hábil de febrero</strong>. Si lo sacas por primera vez, puedes hacerlo en cualquier momento del año.</p></div></li>
+      <li><span class="paso" aria-hidden="true">3</span><div><h3>Empieza a facturar por internet</h3><p>Tienes dos meses para usar la <button type="button" class="term" data-t="factura">factura electrónica</button>. La DIAN tiene un programa gratuito para hacerlo.</p></div></li>
+      <li><span class="paso" aria-hidden="true">4</span><div><h3>Paga por adelantado cada dos meses</h3><p>Cada dos meses llenas un recibo en línea con lo que vendiste y pagas un <button type="button" class="term" data-t="anticipo">anticipo</button>. Hay que presentarlo aunque no hayas vendido nada.</p></div></li>
+      <li><span class="paso" aria-hidden="true">5</span><div><h3>Presenta la declaración del año</h3><p>A comienzos del año siguiente sumas todo en una sola declaración. Se descuenta lo que ya pagaste y, si pagaste de más, te queda saldo a favor.</p></div></li>
+    </ol>
+    <div class="pila rev">
+      <div class="tarjeta dest">
+        <span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-reloj"/></svg></span>
+        <h3>¿Vendes poco? Es aún más fácil</h3>
+        <p>Si el negocio es tuyo y vendes hasta <strong class="num">$183 millones al año</strong>, no tienes que pagar cada dos meses. Haces un solo pago con la declaración del año.</p>
+      </div>
+      <div class="tarjeta atn">
+        <span class="bola"><svg class="ic" aria-hidden="true"><use href="#i-alerta"/></svg></span>
+        <h3>Lo que te puede sacar del régimen</h3>
+        <p>Pasarte del límite de ventas, dejar de cumplir un requisito o atrasarte <strong>más de un mes</strong> en un pago. Si pasa, vuelves al régimen tradicional.</p>
+      </div>
+      <p class="nota">Las fechas de pago dependen del último número de tu NIT y cambian cada año. Consúltalas en el calendario de la <a href="https://www.dian.gov.co" target="_blank" rel="noopener">DIAN</a>.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="balance" class="tinte"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Para decidir bien</p>
+    <h2>Lo bueno y lo que debes cuidar</h2>
+  </div>
+  <div class="vs">
+    <div class="col pro rev">
+      <h3><svg class="ic" aria-hidden="true" style="color:var(--accion)"><use href="#i-ok"/></svg>Lo bueno</h3>
+      <ul>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-recibo"/></svg><span>Menos papeleo: un recibo cada dos meses y una declaración al año.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-flecha"/></svg><span>Tus clientes no te descuentan <button type="button" class="term" data-t="retencion">retención en la fuente</button>, así que recibes el pago completo.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-gente"/></svg><span>Lo que pagas de pensión por tus empleados se resta de tu impuesto.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-tarjeta"/></svg><span>Si te pagan con tarjeta o transferencia, te descuentan el 0,5 % de esas ventas del impuesto.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-escudo"/></svg><span>No pagas algunos aportes de nómina, como los del SENA y el ICBF.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-tienda"/></svg><span>Porcentajes bajos para tiendas, comercio y pequeñas fábricas.</span></li>
+      </ul>
+    </div>
+    <div class="col contra rev">
+      <h3><svg class="ic" aria-hidden="true" style="color:var(--alerta)"><use href="#i-alerta"/></svg>Lo que debes cuidar</h3>
+      <ul>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-renta"/></svg><span>Pagas sobre lo que vendes, no sobre lo que ganas. Aunque tengas pérdidas, igual pagas.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>No puedes restar tus gastos para pagar menos.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-lapiz"/></svg><span>Para profesionales independientes el porcentaje es alto; haz las cuentas antes.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-reloj"/></svg><span>Hay que facturar por internet y no atrasarse en los pagos.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-muni"/></svg><span>Los descuentos no se aplican a la parte que le toca al municipio.</span></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-llave"/></svg><span>Una vez entras, te quedas todo el año. Solo puedes cambiar para el año siguiente.</span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="dudas"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Preguntas frecuentes</p>
+    <h2>Dudas comunes</h2>
+  </div>
+  <div class="dos">
+    <div class="faq rev">
+      <details><summary>¿Qué es una UVT?</summary><p>Es una medida que usa la DIAN para fijar valores en las leyes, como los límites y las multas. Cada año sube con la inflación. En 2026, 1 UVT vale $52.374. Para pasar de UVT a pesos, multiplicas.</p></details>
+      <details><summary>¿Qué quiere decir “ingresos brutos”?</summary><p>Todo lo que recibes por tu negocio en el año, antes de restar los gastos. Si vendiste $100 millones y gastaste $70 millones, tus ingresos brutos son $100 millones.</p></details>
+      <details><summary>¿Qué es un anticipo?</summary><p>Un pago adelantado del impuesto. En el Régimen Simple se hace cada dos meses, y al final del año se resta de lo que te toque pagar.</p></details>
+      <details><summary>Soy empleado y también tengo un negocio. ¿Puedo entrar?</summary><p>El régimen es para quien tiene un negocio propio. Si en realidad trabajas como empleado, con jefe y horario, esos ingresos no cuentan como negocio. Si tienes las dos cosas, consulta a un contador antes de decidir.</p></details>
+    </div>
+    <div class="faq rev">
+      <details><summary>¿Puedo salirme si no me conviene?</summary><p>Sí, pero solo para el año siguiente. Tienes que actualizar tu RUT antes del último día hábil de enero.</p></details>
+      <details><summary>¿La DIAN me puede inscribir sin que yo lo pida?</summary><p>Sí. Puede inscribir a quienes no han presentado sus declaraciones de impuestos.</p></details>
+      <details><summary>¿Tengo que llevar contabilidad?</summary><p>Las obligaciones de llevar cuentas y entregar información a la DIAN no desaparecen. Lo que se simplifica es la forma de declarar y pagar.</p></details>
+      <details><summary>¿Dónde me inscribo?</summary><p>En la página de la DIAN (dian.gov.co), en la opción para actualizar el RUT. También puedes ir a un punto de atención de la DIAN.</p></details>
+    </div>
+  </div>
+</div></section>
+
+<section id="reto" class="tinte"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">Ponte a prueba</p>
+    <h2>¿Cuánto aprendiste?</h2>
+    <p>Cinco preguntas rápidas. Toca una respuesta para ver si acertaste y por qué.</p>
+  </div>
+  <div class="marcador rev"><span class="pts num" id="pts" aria-live="polite">0 / 5</span><span class="nota" id="pts-txt">Aún no has respondido.</span><button type="button" class="btn-borde" id="reiniciar">Volver a empezar</button></div>
+  <div class="quiz" id="quiz"></div>
+</div></section>
+
+<section id="fuentes"><div class="env">
+  <div class="cab rev">
+    <p class="eyebrow">De dónde sale esta información</p>
+    <h2>Leyes y fuentes</h2>
+  </div>
+  <ul class="fuentes rev">
+    <li>Estatuto Tributario, artículos 903 a 916 (texto vigente consultado en octubre de 2026): <a href="https://www.contadia.com/estatuto-tributario/articulo-908-tarifa" target="_blank" rel="noopener">artículo 908, porcentajes</a>, <a href="https://www.contadia.com/estatuto-tributario/articulo-905-sujetos-pasivos" target="_blank" rel="noopener">905</a>, <a href="https://www.contadia.com/estatuto-tributario/articulo-906-sujetos-que-no-pueden-optar-por-el-impuesto-unificado-bajo-el-regimen-simple-de-tributacion-simple" target="_blank" rel="noopener">906</a>, <a href="https://www.contadia.com/estatuto-tributario/articulo-910-declaracion-y-pago-del-impuesto-unificado-bajo-el-regimen-simple-de-tributacion-simple" target="_blank" rel="noopener">910</a>.</li>
+    <li>Leyes 1819 de 2016, 1943 de 2018, 2010 de 2019, 2155 de 2021 y 2277 de 2022.</li>
+    <li>Corte Constitucional, Sentencias C-481 de 2019 y C-540 de 2023, y <a href="https://legalytributarioenlinea.co.pwc.com/Repositorio%20PwC/PDF/Doctrina/DIAN/Conceptos/2024/CON-000024-24.pdf" target="_blank" rel="noopener">Concepto DIAN 000024 de 2024</a>.</li>
+    <li>Decreto 1545 de 2024.</li>
+    <li>Resolución DIAN 000238 de 2025: <a href="https://incp.org.co/publicaciones/infoincp-publicaciones/impuestos/2025/12/dian-fijo-en-52-374-en-valor-de-la-uvt-para-el-ano-gravable-2026/" target="_blank" rel="noopener">UVT 2026 en $52.374</a>.</li>
+    <li>Estatuto Tributario, artículos 240 y 241 (tarifas del régimen tradicional usadas en el simulador).</li>
+  </ul>
+</div></section>
+</main>
+
+<footer>
+  <div class="burbuja b1" aria-hidden="true" style="opacity:.3"></div>
+  <div class="env">
+    <div class="creditos">
+      <div><div class="rol">Creador de oportunidades</div><div class="nom">Luisa Fernanda García Briñez</div></div>
+      <div><div class="rol">Gestor de conocimiento</div><div class="nom">Artidoro Sánchez Vega</div></div>
+      <div class="curso">Planeación Tributaria y Auditoría · Universidad de Cundinamarca · 2026</div>
+    </div>
+    <div class="legal">
+      <p>Trabajo académico con fines educativos. No es un sitio oficial de la Universidad de Cundinamarca ni de la DIAN, y no reemplaza la asesoría de un contador público.</p>
+      <p>Diseño según la paleta, la tipografía y los lineamientos de accesibilidad (contraste AA) del Manual de Imagen Institucional ECOM002 V19. Cifras en pesos calculadas con la UVT 2026.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- asistente -->
+<div class="pista-guia" id="pista-guia" role="status" hidden></div>
+<button class="guia-btn" id="guia-btn" type="button" aria-expanded="false" aria-controls="guia"><span class="avatar" aria-hidden="true"><i></i></span><span class="punto" id="guia-punto" aria-hidden="true"></span><span class="txt">Pregúntale a Simón</span></button>
+<div class="guia" id="guia" role="dialog" aria-labelledby="guia-tit" hidden>
+  <div class="guia-cab">
+    <span class="avatar" aria-hidden="true"><i></i></span>
+    <div><strong id="guia-tit">Simón, tu guía</strong><small id="guia-sub">Te acompaño por la página</small></div>
+    <button type="button" id="guia-min" aria-label="Cerrar la guía"><svg class="ic" aria-hidden="true"><use href="#i-bajar"/></svg></button>
+  </div>
+  <div class="guia-log" id="guia-log" aria-live="polite"></div>
+  <div class="guia-pie">
+    <div class="chips" id="guia-chips" role="group" aria-label="Preguntas sugeridas"></div>
+    <form class="preguntar" id="guia-form" hidden>
+      <label for="guia-in" class="salto" style="position:absolute;left:-999px">Escribe tu pregunta</label>
+      <input id="guia-in" type="text" autocomplete="off" maxlength="400" placeholder="Escribe tu pregunta…">
+      <button type="submit" id="guia-env" aria-label="Enviar pregunta"><svg class="ic" aria-hidden="true"><use href="#i-enviar"/></svg></button>
+    </form>
+    <p class="guia-aviso" id="guia-aviso" hidden>Las respuestas escritas las da Claude con tu cuenta y pueden tener errores. Verifica con un contador.</p>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+document.documentElement.lang='es-CO';
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var UVT=52374, UVT_ANT=49799, TOPES=[6000,15000,30000,100000];
+var GRUPOS=[
+ {id:'tienda',tab:'Tienda o peluquería',ic:'i-tienda',nom:'Tienda de barrio, minimercado o peluquería',t:[1.2,2.8,4.4,5.6],nota:'Tiendas pequeñas, minimercados, micromercados y peluquerías.'},
+ {id:'comercio',tab:'Comercio, taller o fábrica',ic:'i-llave',nom:'Comercio, taller, construcción o fábrica',t:[1.6,2.0,3.5,4.5],nota:'Comercio al por mayor y al detal, talleres, electricistas, construcción, fábricas pequeñas, telecomunicaciones y todo lo que no esté en los otros grupos.'},
+ {id:'comida',tab:'Restaurante o transporte',ic:'i-cafe',nom:'Restaurante, cafetería o bar',t:[3.1,3.4,4.0,4.5],inc:true,nota:'Restaurantes, cafeterías, bares y transporte. Los negocios de comidas y bebidas además cobran al cliente el 8 % de impuesto al consumo.'},
+ {id:'transporte',nom:'Transporte',t:[3.1,3.4,4.0,4.5]},
+ {id:'prof',tab:'Profesional independiente',ic:'i-lapiz',nom:'Profesional independiente o consultoría',t:[5.9,7.3,12,14.5],nota:'Profesionales y consultores cuyo trabajo es sobre todo intelectual: abogados, contadores, diseñadores, médicos independientes, ingenieros consultores, etc.'}
+];
+var $=function(id){return document.getElementById(id)};
+var pesos=function(n){return '$'+Math.round(n).toLocaleString('es-CO')};
+var millones=function(n){var m=n/1e6;return '$'+m.toLocaleString('es-CO',{maximumFractionDigits:m<10?1:0})+' millones'};
+var pct=function(n){return n.toLocaleString('es-CO',{maximumFractionDigits:1})+' %'};
+var uvtf=function(n){return n.toLocaleString('es-CO')};
+var icon=function(id){return '<svg class="ic" aria-hidden="true"><use href="#'+id+'"/></svg>'};
+
+/* conteo animado */
+function tween(el,to,fmt,ms){
+  if(reduce){el.textContent=fmt(to);el._v=to;return}
+  var from=el._v||0,t0=performance.now();ms=ms||600;
+  cancelAnimationFrame(el._raf);
+  (function paso(t){var k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,3);el.textContent=fmt(from+(to-from)*e);if(k<1)el._raf=requestAnimationFrame(paso)})(t0);
+  el._v=to;
+}
+document.querySelectorAll('.cuenta').forEach(function(el){el._v=0;tween(el,+el.dataset.v,function(v){return Math.round(v).toLocaleString('es-CO')},1400)});
+
+/* aparición, progreso, menú activo */
+if(!reduce&&'IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rev').forEach(function(el){if(el.getBoundingClientRect().top>innerHeight)io.observe(el)});
+}
+var prog=$('progreso'),links=[].slice.call(document.querySelectorAll('#menu a'));
+function onScroll(){
+  var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?scrollY/h*100:0)+'%';
+  var act=null;links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s&&s.getBoundingClientRect().top<innerHeight*.35)act=a});
+  links.forEach(function(a){a.classList.toggle('activo',a===act)});
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* texto grande */
+var bg=$('btn-grande');
+function setG(on){document.documentElement.classList.toggle('grande',on);bg.setAttribute('aria-pressed',on?'true':'false');try{localStorage.setItem('rst-grande',on?'1':'0')}catch(e){}}
+try{if(localStorage.getItem('rst-grande')==='1')setG(true)}catch(e){}
+bg.addEventListener('click',function(){setG(bg.getAttribute('aria-pressed')!=='true')});
+
+/* verificador */
+var PREG=[
+ {q:'¿Tienes un negocio a tu nombre, o una empresa cuyos dueños son personas que viven en Colombia?',ok:'si',mal:'El régimen es para negocios de personas, o empresas cuyos dueños son personas que viven en Colombia.'},
+ {q:'¿El año pasado vendiste menos de $4.979 millones?',d:'Es el límite de 100.000 UVT con el valor de 2025. Si tu negocio es nuevo, en 2026 no debes pasar de $5.237 millones.',ok:'si',mal:'Vendes más del límite permitido.'},
+ {q:'¿Tienes tu RUT y estás dispuesto a facturar por internet?',d:'El RUT es tu registro ante la DIAN y se saca gratis. La factura electrónica es obligatoria en este régimen.',ok:'si',mal:'Sin RUT ni factura electrónica no puedes estar en el régimen.'},
+ {q:'¿En realidad trabajas como empleado, con jefe y horario fijo?',d:'Si es así, lo que recibes es un sueldo y no un negocio.',ok:'no',mal:'Si en realidad eres empleado, esos ingresos no pueden ir al Régimen Simple.'},
+ {q:'¿Tu negocio es alguno de estos?',d:'Préstamos de dinero (microcrédito o factoring), asesoría financiera, venta de energía, venta o fabricación de carros, importación de combustibles, armas o explosivos. También si más de la quinta parte de lo que recibes viene de arriendos u otras rentas sin trabajar.',ok:'no',mal:'Esa actividad no está permitida en el Régimen Simple.'},
+ {q:'Si es una empresa: ¿es parte de otra empresa, es dueña de parte de otras empresas, es un banco o salió de dividir otra empresa hace menos de 5 años?',d:'Si el negocio es tuyo (persona natural), responde No.',ok:'no',mal:'Ese tipo de empresa no puede entrar al Régimen Simple.'}
+];
+var cont=$('preguntas');
+PREG.forEach(function(p,i){
+  var fs=document.createElement('fieldset');fs.className='preg';
+  fs.innerHTML='<legend>'+p.q+(p.d?'<small>'+p.d+'</small>':'')+'</legend><div class="sn">'+
+   '<label><input type="radio" name="v'+i+'" id="v'+i+'s" value="si"><span>Sí</span></label>'+
+   '<label><input type="radio" name="v'+i+'" id="v'+i+'n" value="no"><span>No</span></label></div>';
+  cont.appendChild(fs);
+});
+var estadoV='';
+function verificar(){
+  var mal=[],resp=0;
+  PREG.forEach(function(p,i){var r=document.querySelector('input[name="v'+i+'"]:checked');if(r){resp++;if(r.value!==p.ok)mal.push(p.mal)}});
+  $('contador').textContent=resp+' de 6';$('pista').style.width=(resp/6*100)+'%';
+  var v=$('veredicto'),est,html;
+  if(mal.length){est='no';html='<span class="sello">'+icon('i-x')+'</span><strong>Con estas respuestas no podrías entrar</strong><ul><li>'+mal.join('</li><li>')+'</li></ul><p>Puedes seguir en el régimen tradicional, que no tiene estas restricciones.</p>'}
+  else if(resp<6){est='pend';html='<span class="sello" style="background:var(--linea)">'+icon('i-dudas')+'</span><strong>'+(resp?'Vas bien':'Tu resultado aparecerá aquí')+'</strong><p>'+(resp?'Te '+(6-resp===1?'falta 1 pregunta.':'faltan '+(6-resp)+' preguntas.'):'Responde las seis preguntas.')+'</p>'}
+  else{est='ok';html='<span class="sello">'+icon('i-ok')+'</span><strong>¡Sí podrías entrar al Régimen Simple!</strong><p>Ahora mira si te conviene en el <a href="#simulador">simulador</a>.</p>'}
+  v.className='veredicto '+est+(est!==estadoV&&estadoV?' cambia':'');v.innerHTML=html;estadoV=est;
+}
+$('verificador').addEventListener('change',verificar);
+$('verificador').addEventListener('submit',function(e){e.preventDefault()});
+verificar();
+
+/* porcentajes */
+var tabs=$('tabs'),conTab=GRUPOS.filter(function(g){return g.tab});
+function pintarTabla(g){
+  var h='<caption>'+g.tab+'</caption><thead><tr><th scope="col">Si vendes al año…</th><th scope="col">Pagas</th><th scope="col"><span style="position:absolute;left:-999px">Comparación visual</span></th></tr></thead><tbody>',ant=0;
+  TOPES.forEach(function(t,i){
+    h+='<tr><td>'+(ant?'De '+millones(ant*UVT)+' a ':'Menos de ')+(ant?millones(t*UVT):millones(t*UVT))+'<span class="uvt-chica">'+uvtf(ant)+' a '+uvtf(t)+' UVT</span></td><td class="t">'+pct(g.t[i])+'</td><td class="v" aria-hidden="true"><div class="mini"><i data-w="'+(g.t[i]/14.5*100)+'"></i></div></td></tr>';ant=t});
+  $('tabla-tarifas').innerHTML=h+'</tbody>';$('nota-tarifa').textContent='Incluye: '+g.nota;
+  var ej=150e6;
+  $('ejemplo-tarifa').innerHTML='Ejemplo: si vendes <b>$150 millones</b> al año, pagas el '+pct(g.t[0])+', es decir <b>'+pesos(ej*g.t[0]/100)+'</b> en todo el año.';
+  requestAnimationFrame(function(){requestAnimationFrame(function(){document.querySelectorAll('#tabla-tarifas .mini i').forEach(function(i){i.style.width=i.dataset.w+'%'})})});
+}
+conTab.forEach(function(g,i){
+  var b=document.createElement('button');b.type='button';b.id='tab-'+g.id;b.setAttribute('role','tab');b.setAttribute('aria-controls','panel-tarifas');
+  b.setAttribute('aria-selected',i===0?'true':'false');b.tabIndex=i===0?0:-1;b.innerHTML=icon(g.ic)+g.tab;
+  b.addEventListener('click',function(){sel(i)});
+  b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=(i+(e.key==='ArrowRight'?1:conTab.length-1))%conTab.length;sel(n);tabs.children[n].focus()}});
+  tabs.appendChild(b);
+});
+function sel(i){[].forEach.call(tabs.children,function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1});$('panel-tarifas').setAttribute('aria-labelledby',tabs.children[i].id);pintarTabla(conTab[i])}
+sel(0);
+
+/* simulador */
+var act=$('s-act');
+GRUPOS.forEach(function(g){var o=document.createElement('option');o.value=g.id;o.textContent=g.nom;act.appendChild(o)});
+var CASOS=[
+ {n:'Tienda de barrio',ic:'i-tienda',tipo:'pn',act:'tienda',ing:180000000,cos:82,ica:7},
+ {n:'Restaurante',ic:'i-cafe',tipo:'pn',act:'comida',ing:420000000,cos:75,ica:10},
+ {n:'Diseñadora independiente',ic:'i-lapiz',tipo:'pn',act:'prof',ing:120000000,cos:20,ica:9.5},
+ {n:'Ferretería (empresa)',ic:'i-llave',tipo:'pj',act:'comercio',ing:1500000000,cos:88,ica:7}
+];
+var botCasos=[];
+CASOS.forEach(function(c){var b=document.createElement('button');b.type='button';b.innerHTML=icon(c.ic)+c.n;b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){cargar(c,b)});$('casos').appendChild(b);botCasos.push(b)});
+function marcar(b){botCasos.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})}
+function cargar(c,b){$('s-tipo').value=c.tipo;$('s-nuevo').value='no';act.value=c.act;$('s-ing').value=Math.round(c.ing).toLocaleString('es-CO');$('s-cos').value=c.cos;$('s-ica').value=c.ica;marcar(b);calc()}
+function tarifaSimple(g,u){for(var i=0;i<TOPES.length;i++)if(u<TOPES[i])return g.t[i];return null}
+function renta241(u){ /* art. 241 E.T., en UVT */
+  if(u<=1090)return 0; if(u<=1700)return (u-1090)*.19; if(u<=4100)return (u-1700)*.28+116;
+  if(u<=8670)return (u-4100)*.33+788; if(u<=18970)return (u-8670)*.35+2296;
+  if(u<=31000)return (u-18970)*.37+5901; return (u-31000)*.39+10352}
+function rentaOrd(util,tipo){return tipo==='pj'?Math.max(0,util)*.35:renta241(Math.max(0,util)/UVT)*UVT}
+var ultimo={};
+function calc(){
+  var ing=parseInt(($('s-ing').value||'').replace(/\D/g,''),10)||0;
+  var cos=+$('s-cos').value, ica=+$('s-ica').value, tipo=$('s-tipo').value;
+  var g=GRUPOS.filter(function(x){return x.id===act.value})[0];
+  var u=ing/UVT, util=ing*(1-cos/100);
+  $('s-cos-o').textContent=cos+' %';$('s-ica-o').textContent=ica.toLocaleString('es-CO')+' por mil';
+  /* Límite art. 905: ingresos del año anterior < 100.000 UVT (UVT 2025); negocio nuevo: ingresos del año < 100.000 UVT (UVT 2026) */
+  var nuevo=$('s-nuevo').value==='si', limite=100000*(nuevo?UVT:UVT_ANT);
+  var fuera=ing>=limite, cerca=!fuera&&ing>=limite*.9;
+  $('s-ing-ay').textContent=fuera?'Superas el límite de '+pesos(limite)+'.':
+    (cerca?'Ojo: estás cerca del límite de '+pesos(limite)+'. ':'')+'Tu ganancia aproximada sería '+pesos(util)+' al año.';
+  var renta=rentaOrd(util,tipo), vIca=ing*ica/1000, ord=renta+vIca;
+  var t=fuera?null:tarifaSimple(g,u), det=$('r-det');
+  tween($('r-ord'),ord,pesos);
+  $('r-ord-d').textContent='Renta '+pesos(renta)+' + industria y comercio '+pesos(vIca);
+  if(t===null){
+    $('r-frase').innerHTML='Con esas ventas <em>no puedes estar en el Régimen Simple</em>. Te corresponde el régimen tradicional.';
+    cancelAnimationFrame($('r-simple')._raf);
+    $('r-simple').textContent='No aplica';$('r-simple')._v=0;
+    $('r-simple-d').textContent=nuevo?'Un negocio que empieza en 2026 debe vender menos de '+pesos(limite)+' en el año (100.000 UVT de 2026).':
+      'Para estar en 2026, las ventas de 2025 deben ser menores a '+pesos(limite)+' (100.000 UVT con el valor de 2025, $49.799).';
+    $('b-simple').style.width='0';$('b-ord').style.width='100%';det.innerHTML='';$('r-inc').textContent='';$('r-porque').textContent='';
+    $('g-simple').hidden=true;$('g-ord').hidden=true;$('f-simple').classList.remove('gana');$('f-ord').classList.remove('gana');ultimo={};return}
+  var sim=ing*t/100, max=Math.max(sim,ord,1), dif=ord-sim;
+  tween($('r-simple'),sim,pesos);
+  $('r-simple-d').textContent='El '+pct(t)+' de todo lo que vendes, con industria y comercio incluido';
+  $('b-simple').style.width=(sim/max*100)+'%';$('b-ord').style.width=(ord/max*100)+'%';
+  var gs=ing&&dif>=1, go=ing&&dif<=-1;
+  $('g-simple').hidden=!gs;$('g-ord').hidden=!go;$('f-simple').classList.toggle('gana',!!gs);$('f-ord').classList.toggle('gana',!!go);
+  $('r-frase').innerHTML=!ing?'Escribe cuánto vendes para comparar.':
+    !gs&&!go?'Con estos datos pagarías lo mismo en los dos.':
+    gs?'Con estos datos, en el Régimen Simple pagarías <em>'+pesos(dif)+' menos</em> al año.':
+       'Con estos datos, el régimen tradicional te sale <em>'+pesos(-dif)+' más barato</em> al año.';
+  $('r-porque').textContent=!ing?'':go?'¿Por qué? Tus gastos se llevan el '+cos+' % de lo que vendes, así que ganas poco. El tradicional cobra sobre esa ganancia; el Simple cobra sobre todo lo vendido.':
+    gs?'¿Por qué? Tus gastos son relativamente bajos, así que tu ganancia es alta. El tradicional cobraría sobre esa ganancia, y el Simple te cobra un porcentaje pequeño de lo vendido.':'';
+  var sinAnt=tipo==='pn'&&u<=3500, eq=equilibrio(ing,tipo,ica,sim);
+  det.innerHTML='<dt>Pago cada dos meses (aproximado)</dt><dd>'+(sinAnt?'No aplica: pagas una vez al año':pesos(sim/6))+'</dd>'+
+    '<dt>Tus ventas medidas en UVT</dt><dd>'+Math.round(u).toLocaleString('es-CO')+' UVT</dd>'+
+    '<dt>Punto de cambio</dt><dd>'+eq+'</dd>';
+  ultimo={ventas:pesos(ing),gastos:cos+' %',actividad:g.nom,tipo:tipo==='pj'?'empresa':'persona natural',simple:pesos(sim),tradicional:pesos(ord),eq:eq};
+  $('r-inc').textContent=g.inc?'Además le cobras a tus clientes el 8 % de impuesto al consumo ('+pesos(ing*.08)+' al año). Eso se cobra en los dos regímenes, por eso no entra en la comparación.':'';
+}
+function equilibrio(ing,tipo,ica,sim){
+  if(!ing)return '—';
+  var lo=0,hi=100;
+  for(var k=0;k<40;k++){var m=(lo+hi)/2,o=rentaOrd(ing*(1-m/100),tipo)+ing*ica/1000;if(o>sim)lo=m;else hi=m}
+  if(lo<0.5)return 'El tradicional siempre sale menor';
+  if(lo>99.5)return 'El Simple siempre sale menor';
+  return 'Con gastos de más del '+Math.round(lo)+' %, conviene el tradicional';
+}
+$('s-ing').addEventListener('input',function(){var d=this.value.replace(/\D/g,'').slice(0,13);this.value=d?parseInt(d,10).toLocaleString('es-CO'):'';marcar(null);calc()});
+['s-tipo','s-nuevo','s-act','s-cos','s-ica'].forEach(function(id){$(id).addEventListener('input',function(){marcar(null);calc()})});
+$('form-sim').addEventListener('submit',function(e){e.preventDefault()});
+cargar(CASOS[0],botCasos[0]);
+
+/* reto */
+var QUIZ=[
+ {q:'¿Sobre qué se calcula lo que pagas en el Régimen Simple?',o:['Sobre lo que ganas después de gastos','Sobre todo lo que vendes en el año','Sobre lo que tienes ahorrado'],c:1,e:'Se calcula sobre todo lo que vendes (ingresos brutos), sin restar gastos.'},
+ {q:'¿Hasta cuánto puedes vender al año para estar en el Régimen Simple?',o:['Unos $500 millones','Menos de unos $4.980 millones el año anterior','No hay límite'],c:1,e:'El límite es de 100.000 UVT y se mide con las ventas del año anterior: para estar en 2026, menos de $4.979,9 millones en 2025.'},
+ {q:'¿Qué impuesto sigue aparte aunque estés en el Régimen Simple?',o:['Industria y comercio','El IVA','El impuesto de renta'],c:1,e:'El IVA sigue aparte, aunque se paga con el mismo recibo.'},
+ {q:'Si ya tienes RUT, ¿hasta cuándo puedes pasarte al Régimen Simple?',o:['Hasta el último día hábil de febrero','En cualquier momento del año','Hasta diciembre'],c:0,e:'Quien ya tiene RUT puede pasarse hasta el último día hábil de febrero.'},
+ {q:'Si tu negocio es tuyo y vendes $100 millones al año…',o:['Pagas cada mes','Haces un solo pago al año','No pagas nada'],c:1,e:'Si vendes hasta unos $183 millones al año, no pagas cada dos meses: haces un solo pago con la declaración anual.'}
+];
+var aciertos=0,resp=0;
+function armarQuiz(){
+  aciertos=0;resp=0;$('quiz').innerHTML='';actualizar();
+  QUIZ.forEach(function(p,i){
+    var d=document.createElement('div');d.className='q';
+    d.innerHTML='<h3><span>Pregunta '+(i+1)+'</span>'+p.q+'</h3><div class="ops" role="group" aria-label="Opciones de la pregunta '+(i+1)+'"></div><p class="expl" hidden></p>';
+    var ops=d.querySelector('.ops');
+    p.o.forEach(function(t,j){var b=document.createElement('button');b.type='button';b.textContent=t;b.addEventListener('click',function(){
+      [].forEach.call(ops.children,function(x,k){x.disabled=true;if(k===p.c)x.classList.add('bien')});
+      if(j!==p.c)b.classList.add('mal');else aciertos++;resp++;
+      var ex=d.querySelector('.expl');ex.hidden=false;ex.textContent=(j===p.c?'¡Correcto! ':'No es esa. ')+p.e;actualizar()});ops.appendChild(b)});
+    $('quiz').appendChild(d);
+  });
+}
+function actualizar(){
+  $('pts').textContent=aciertos+' / '+QUIZ.length;
+  $('pts-txt').textContent=resp<QUIZ.length?(resp?'Llevas '+resp+' de '+QUIZ.length+' respondidas.':'Aún no has respondido.'):
+    aciertos===QUIZ.length?'¡Perfecto! Ya entiendes el Régimen Simple.':aciertos>=3?'Muy bien. Repasa las que fallaste.':'Vuelve a mirar las secciones y prueba de nuevo.';
+}
+$('reiniciar').addEventListener('click',armarQuiz);
+armarQuiz();
+
+/* ================= Simón, el asistente ================= */
+var GLOS={
+ uvt:['UVT','Es una medida que usa la DIAN para poner valores en las leyes (límites, multas). Cada año sube con la inflación. En 2026, 1 UVT = $52.374. Para pasar a pesos, multiplica.'],
+ dian:['DIAN','Es la entidad del Gobierno que cobra los impuestos nacionales en Colombia: la Dirección de Impuestos y Aduanas Nacionales.'],
+ renta:['Impuesto de renta','Es el impuesto que se paga sobre lo que ganas en el año, después de restar tus gastos. En el Régimen Simple se reemplaza por un solo pago sobre lo que vendes.'],
+ ica:['Industria y comercio','Es un impuesto que cobra cada municipio a los negocios según lo que venden allí. En el Régimen Simple va incluido en el mismo pago.'],
+ ingresos:['Ingresos brutos','Es todo lo que recibes por tu negocio en el año, antes de restar los gastos. Si vendiste $100 millones y gastaste $70 millones, tus ingresos brutos son $100 millones.'],
+ iva:['IVA','Es el impuesto que se le cobra al cliente al venderle muchos productos y servicios (casi siempre 19 %). El negocio lo cobra y se lo entrega a la DIAN.'],
+ rut:['RUT','Es el Registro Único Tributario: tu “cédula” ante la DIAN. Ahí aparece qué impuestos te tocan. Se saca gratis en dian.gov.co.'],
+ factura:['Factura electrónica','Es una factura que se hace por internet y llega directamente a la DIAN. La DIAN ofrece un programa gratuito para hacerla.'],
+ anticipo:['Anticipo','Es un pago adelantado. En el Régimen Simple pagas cada dos meses una parte del impuesto del año, y al final se resta de lo que te toque.'],
+ retencion:['Retención en la fuente','Es una parte del pago que un cliente te descuenta y le entrega directamente a la DIAN, como adelanto de tus impuestos. En el Régimen Simple no te la descuentan.']
+};
+var TOUR=[
+ {id:'inicio',t:'Empecemos',x:'Esta página explica el Régimen Simple: una forma de pagar impuestos más fácil para negocios pequeños y medianos. Te voy a mostrar cada parte. Puedes salirte cuando quieras.'},
+ {id:'que-es',t:'¿Qué es?',x:'Aquí ves la idea principal: en vez de pagar varios impuestos por separado, pagas uno solo, calculado sobre lo que vendes. Toca las palabras subrayadas si alguna no la entiendes.'},
+ {id:'puedo',t:'¿Puedo entrar?',x:'Responde estas seis preguntas de sí o no. Al final te digo si podrías entrar y, si no, por qué.'},
+ {id:'tarifas',t:'¿Cuánto pago?',x:'Elige tu tipo de negocio y mira qué porcentaje de tus ventas pagarías. Abajo hay un ejemplo con números.'},
+ {id:'simulador',t:'¿Me conviene?',x:'Esta es la parte más útil. Toca un ejemplo o escribe tus ventas y gastos, y compara cuánto pagarías en cada régimen. Si tus gastos son muy altos, el tradicional suele convenir más.'},
+ {id:'pasos',t:'Cómo entrar',x:'Son cinco pasos. Lo más importante: inscribirte en el RUT antes de que termine febrero y pagar a tiempo cada dos meses.'},
+ {id:'balance',t:'Pros y contras',x:'Antes de decidir, mira lo bueno y lo que debes cuidar. La clave: pagas aunque tengas pérdidas, porque se calcula sobre lo que vendes.'},
+ {id:'reto',t:'Ponte a prueba',x:'Para terminar, responde cinco preguntas y mira cuánto aprendiste. ¡Gracias por hacer el recorrido!'}
+];
+var FAQ=[
+ {q:'¿Qué es, en pocas palabras?',a:'Es una forma voluntaria de pagar impuestos: juntas varios en un solo pago, que se calcula como un porcentaje de lo que vendes. Hay menos papeleo.'},
+ {q:'¿Me conviene?',a:'Depende de tus gastos. Si gastas mucho y ganas poco, suele convenir el régimen tradicional. Si tus gastos son bajos, suele convenir el Simple. Compruébalo en el simulador.',ir:'simulador'},
+ {q:'¿Cuánto pagaría?',a:'Entre el 1,2 % y el 14,5 % de lo que vendes en el año, según tu tipo de negocio y cuánto vendes. Las tiendas pagan lo menos y los profesionales lo más.',ir:'tarifas'},
+ {q:'¿Cómo me inscribo?',a:'Actualizas tu RUT en la página de la DIAN y marcas el Régimen Simple. Si ya tenías RUT, el plazo es hasta el último día hábil de febrero.',ir:'pasos'},
+ {q:'¿Quién no puede entrar?',a:'Quienes vendieron $4.979,9 millones o más el año anterior (100.000 UVT), quienes en realidad son empleados, y algunos negocios como préstamos de dinero, venta de carros o de energía.',ir:'puedo'},
+ {q:'¿Qué pasa si me atraso?',a:'Si te atrasas más de un mes en un pago, la DIAN te saca del Régimen Simple y vuelves al tradicional.'},
+ {q:'¿Puedo salirme?',a:'Sí, para el año siguiente. Tienes que actualizar tu RUT antes del último día hábil de enero.'},
+ {q:'¿Qué es una UVT?',a:GLOS.uvt[1]}
+];
+var REGLAS='Eres Simón, un guía amable dentro de una página web educativa sobre el Régimen Simple de Tributación (RST) de Colombia, hecha por estudiantes de Planeación Tributaria y Auditoría de la Universidad de Cundinamarca para el público general. '+
+ 'Responde SIEMPRE en español de Colombia, con palabras sencillas, como le explicarías a un tendero o a un emprendedor sin formación contable. Máximo 120 palabras. Sin tablas ni markdown; puedes usar viñetas con guion. Si usas un término técnico, explícalo en la misma frase. '+
+ 'Usa estos datos vigentes en 2026 y no inventes cifras: UVT 2026 = $52.374. Límite: ingresos brutos del año anterior menores a 100.000 UVT (unos $5.237 millones; con UVT 2025 de $49.799 son $4.979,9 millones). '+
+ 'Porcentajes del art. 908 E.T. sobre ingresos brutos anuales, por rangos 0-6.000 / 6.000-15.000 / 15.000-30.000 / 30.000-100.000 UVT: tiendas pequeñas, minimercados, micromercados y peluquerías 1,2/2,8/4,4/5,6 %; comercio, industria, talleres, construcción y demás 1,6/2,0/3,5/4,5 %; expendio de comidas y bebidas y transporte 3,1/3,4/4,0/4,5 % (más 8 % de impuesto al consumo en comidas y bebidas); servicios profesionales, consultoría y profesiones liberales 5,9/7,3/12/14,5 %. Actividades CIIU 4665, 3830 y 3811: 1,62 %. Con varias actividades se usa la tarifa más alta. La Sentencia C-540 de 2023 anuló las tablas especiales de la Ley 2277 de 2022 para salud, educación y profesionales. '+
+ 'Integra renta, industria y comercio (con avisos y tableros y sobretasa bomberil) e impuesto al consumo; el IVA sigue aparte pero se paga con el recibo SIMPLE (las tiendas pequeñas, minimercados y peluquerías no son responsables de IVA). Inscripción: actualizar el RUT (responsabilidad 47) hasta el último día hábil de febrero; si es la primera inscripción en el RUT, en cualquier momento. Salida: actualizar el RUT antes del último día hábil de enero para el año siguiente. Factura electrónica obligatoria dentro de los 2 meses siguientes. Anticipos bimestrales con el recibo electrónico (formulario 2593) aunque sean cero; declaración anual (formulario 260). Personas naturales con ingresos hasta 3.500 UVT (unos $183 millones) solo hacen la declaración y pago anual. Atrasarse más de un mes en un anticipo excluye del régimen. No hay retención en la fuente a título de renta; descuento del 0,5 % de las ventas por pagos electrónicos; los aportes a pensión de empleados se descuentan; exoneración de aportes parafiscales en los términos del art. 114-1. No pueden: sociedades extranjeras, no residentes, quien tenga en realidad relación laboral, filiales o subsidiarias, sociedades socias de otras, entidades financieras, microcrédito, factoring, asesoría financiera, energía eléctrica, automóviles, importación de combustibles, armas, quienes tengan 20 % o más de ingresos pasivos, y sociedades escindidas en los últimos 5 años. '+
+ 'Si la pregunta no es sobre impuestos o este régimen, di amablemente que solo ayudas con este tema. Si no sabes algo con certeza, dilo y sugiere consultar a un contador o a la DIAN. Nunca prometas que alguien ahorrará dinero; recuerda que la decisión depende de cada caso. Si es útil, sugiere la sección de la página que sirve: verificador, porcentajes, simulador, pasos o pros y contras.';
+
+var guia=$('guia'),gbtn=$('guia-btn'),log=$('guia-log'),chips=$('guia-chips'),pista=$('pista-guia');
+var enRecorrido=-1,saludado=false,silenciarPistas=false,vistos={},turnos=[],ctl=null,sampleFn=null;
+
+function bloque(clase){var d=document.createElement('div');d.className='msg '+clase;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+function decir(titulo,texto,acciones,pre){
+  var d=bloque('el');
+  if(pre){var s=document.createElement('span');s.className='paso-n';s.textContent=pre;d.appendChild(s);d.appendChild(document.createElement('br'))}
+  if(titulo){var st=document.createElement('strong');st.textContent=titulo;d.appendChild(st);d.appendChild(document.createElement('br'))}
+  d.appendChild(document.createTextNode(texto));
+  if(acciones&&acciones.length){var a=document.createElement('div');a.className='acciones';
+    acciones.forEach(function(x){var b=document.createElement('button');b.type='button';b.textContent=x[0];if(x[2])b.className='pri';b.addEventListener('click',x[1]);a.appendChild(b)});d.appendChild(a)}
+  log.scrollTop=log.scrollHeight;return d;
+}
+function yo(t){bloque('yo').textContent=t}
+function irA(id){var s=$(id);if(!s)return;s.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});s.classList.remove('resaltado');void s.offsetWidth;if(!reduce)s.classList.add('resaltado')}
+function abrir(){
+  ocultarPista();guia.hidden=false;gbtn.setAttribute('aria-expanded','true');$('guia-punto').hidden=true;
+  if(!saludado){saludado=true;saludo()}
+  setTimeout(function(){($('guia-form').hidden?$('guia-min'):$('guia-in')).focus({preventScroll:true})},50);
+}
+function cerrar(){guia.hidden=true;gbtn.setAttribute('aria-expanded','false');guia.classList.remove('recorrido');enRecorrido=-1;gbtn.focus({preventScroll:true})}
+function saludo(){
+  decir('¡Hola! Soy Simón','Te acompaño mientras conoces el Régimen Simple. ¿Qué prefieres?',[
+    ['Hazme el recorrido',function(){recorrido(0)},true],
+    ['Tengo una pregunta',function(){decir('','Toca una de las preguntas de abajo'+(sampleFn?' o escribe la tuya.':'.'));(sampleFn?$('guia-in'):chips.firstChild).focus()}]
+  ]);
+}
+function recorrido(i){
+  if(i<0)i=0;
+  if(i>=TOUR.length){enRecorrido=-1;guia.classList.remove('recorrido');decir('¡Listo!','Terminaste el recorrido. Si te queda alguna duda, pregúntame cuando quieras.');return}
+  log.querySelectorAll('.tour button').forEach(function(b){b.disabled=true});
+  enRecorrido=i;guia.classList.add('recorrido');var p=TOUR[i];irA(p.id);
+  decir(p.t,p.x,[
+    i>0?['Anterior',function(){recorrido(i-1)}]:null,
+    [i===TOUR.length-1?'Terminar':'Siguiente',function(){recorrido(i+1)},true],
+    ['Salir del recorrido',function(){enRecorrido=-1;guia.classList.remove('recorrido');decir('','Listo. Sigo aquí si me necesitas.')}]
+  ].filter(Boolean),'Paso '+(i+1)+' de '+TOUR.length).classList.add('tour');
+}
+FAQ.forEach(function(f){var b=document.createElement('button');b.type='button';b.textContent=f.q;b.addEventListener('click',function(){
+  yo(f.q);decir('',f.a,f.ir?[['Llévame allá',function(){irA(f.ir)},true]]:null)});chips.appendChild(b)});
+gbtn.addEventListener('click',abrir);
+$('guia-min').addEventListener('click',cerrar);
+$('cta-guia').addEventListener('click',function(){saludado=true;abrir();recorrido(0)});
+guia.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar()});
+document.querySelectorAll('.term').forEach(function(b){b.setAttribute('aria-label',b.textContent+': ver qué significa');b.addEventListener('click',function(){
+  var g=GLOS[b.dataset.t];if(!g)return;if(guia.hidden)abrir();decir(g[0],g[1])})});
+
+/* pistas según la sección que se está viendo */
+var PISTAS={'que-es':'¿Alguna palabra no se entiende? Tócala y te la explico.','puedo':'Responde las seis preguntas y te digo si podrías entrar.','tarifas':'Elige tu tipo de negocio para ver tu porcentaje.','simulador':'Toca un ejemplo para ver la comparación en segundos.','pasos':'Lo más importante: inscribirte antes de que termine febrero.','reto':'¿Te animas a probar lo que aprendiste?'};
+var tPista;
+function mostrarPista(txt,id){
+  if(silenciarPistas||!guia.hidden)return;
+  pista.innerHTML='';var p=document.createElement('p');p.textContent=txt;pista.appendChild(p);
+  var ir=document.createElement('button');ir.type='button';ir.className='ir';ir.textContent=id?'Explícame esta parte':'Sí, acompáñame';
+  ir.addEventListener('click',function(){abrir();if(id){var i=TOUR.findIndex(function(x){return x.id===id});if(i>=0)decir(TOUR[i].t,TOUR[i].x)}else recorrido(0)});
+  var x=document.createElement('button');x.type='button';x.className='x';x.setAttribute('aria-label','No mostrar más sugerencias');x.textContent='×';
+  x.addEventListener('click',function(){silenciarPistas=true;ocultarPista()});
+  pista.appendChild(ir);pista.appendChild(x);pista.hidden=false;$('guia-punto').hidden=false;
+  clearTimeout(tPista);tPista=setTimeout(ocultarPista,9000);
+}
+function ocultarPista(){pista.hidden=true;clearTimeout(tPista)}
+setTimeout(function(){if(!saludado)mostrarPista('¡Hola! Soy Simón. ¿Quieres que te acompañe por la página?')},2500);
+if('IntersectionObserver' in window){
+  var ioP=new IntersectionObserver(function(es){es.forEach(function(e){
+    var id=e.target.id;if(e.isIntersecting&&!vistos[id]&&enRecorrido<0&&scrollY>200){vistos[id]=1;mostrarPista(PISTAS[id],id)}})},{threshold:.3});
+  Object.keys(PISTAS).forEach(function(id){ioP.observe($(id))});
+}
+
+/* preguntas libres con Claude (solo si este visor lo permite) */
+function errorTexto(c){return c==='rate_limited'?'Ahora mismo hay muchas preguntas seguidas. Espera un momento y vuelve a intentarlo.':
+  c==='session_expired'?'Tu sesión de Claude terminó. Vuelve a iniciar sesión para hacer preguntas escritas.':
+  c==='refused'||c==='empty_completion'?'No pude responder eso. Intenta preguntarlo de otra forma.':'Hubo un problema de conexión. Intenta de nuevo en un momento.'}
+function apagarChat(msg){$('guia-form').hidden=true;$('guia-aviso').hidden=true;sampleFn=null;if(msg)decir('',msg)}
+if(window.claude&&claude.use){
+  claude.use('sample').then(function(s){if(!s)return;sampleFn=s;$('guia-form').hidden=false;$('guia-aviso').hidden=false;$('guia-sub').textContent='Te acompaño y respondo tus preguntas'}).catch(function(){});
+}
+$('guia-form').addEventListener('submit',function(e){
+  e.preventDefault();var inp=$('guia-in'),q=inp.value.trim();if(!q||!sampleFn)return;
+  inp.value='';yo(q);turnos.push({role:'user',content:q});turnos=turnos.slice(-8);
+  if(turnos[0].role!=='user')turnos.shift();
+  var ctx=REGLAS+(ultimo.simple?' Contexto: en el simulador de la página el visitante tiene ahora: '+JSON.stringify(ultimo)+'.':'');
+  var d=bloque('el pensando');d.textContent='Pensando…';
+  var env=$('guia-env');env.disabled=true;ctl=new AbortController();
+  sampleFn([{role:'user',content:ctx}].concat(turnos),{cache:false,modelTier:'quick',signal:ctl.signal,onText:function(u){d.classList.remove('pensando');d.textContent=u.text;log.scrollTop=log.scrollHeight}})
+  .then(function(r){d.classList.remove('pensando');d.textContent=r.text;turnos.push({role:'assistant',content:r.text})})
+  .catch(function(err){
+    var c=err&&err.code;
+    if(c==='cancelled'){d.textContent=err.text||'';return}
+    if(['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c)>=0){d.remove();turnos.pop();apagarChat('No puedo responder preguntas escritas desde aquí, pero las preguntas sugeridas de abajo siguen funcionando.');return}
+    d.classList.remove('pensando');d.textContent=(err&&err.text?err.text+'\n\n':'')+errorTexto(c);turnos.pop();
+  }).finally(function(){env.disabled=false});
+});
+})();
+</script>
+
+</body>
+</html>
